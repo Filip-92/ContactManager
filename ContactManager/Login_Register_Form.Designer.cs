@@ -91,6 +91,7 @@ namespace ContactManager
             // buttonMinimize
             // 
             this.buttonMinimize.BackColor = System.Drawing.Color.Transparent;
+            this.buttonMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonMinimize.ForeColor = System.Drawing.Color.White;
             this.buttonMinimize.Location = new System.Drawing.Point(231, 3);
@@ -103,6 +104,7 @@ namespace ContactManager
             // buttonClose
             // 
             this.buttonClose.BackColor = System.Drawing.Color.Transparent;
+            this.buttonClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonClose.Location = new System.Drawing.Point(269, 3);
             this.buttonClose.Name = "buttonClose";
