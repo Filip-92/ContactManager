@@ -96,9 +96,9 @@ namespace ContactManager
             this.buttonMinimize.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.buttonMinimize.ForeColor = System.Drawing.Color.White;
-            this.buttonMinimize.Location = new System.Drawing.Point(231, 3);
+            this.buttonMinimize.Location = new System.Drawing.Point(231, 4);
             this.buttonMinimize.Name = "buttonMinimize";
-            this.buttonMinimize.Size = new System.Drawing.Size(32, 31);
+            this.buttonMinimize.Size = new System.Drawing.Size(32, 29);
             this.buttonMinimize.TabIndex = 21;
             this.buttonMinimize.UseVisualStyleBackColor = false;
             this.buttonMinimize.Click += new System.EventHandler(this.buttonMinimize_Click);
@@ -108,9 +108,9 @@ namespace ContactManager
             this.buttonClose.BackColor = System.Drawing.Color.Transparent;
             this.buttonClose.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.buttonClose.Location = new System.Drawing.Point(269, 3);
+            this.buttonClose.Location = new System.Drawing.Point(272, 4);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(37, 31);
+            this.buttonClose.Size = new System.Drawing.Size(32, 29);
             this.buttonClose.TabIndex = 20;
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);

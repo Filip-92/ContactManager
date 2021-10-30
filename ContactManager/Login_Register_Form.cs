@@ -19,8 +19,7 @@ namespace ContactManager
             InitializeComponent();
         }
 
-        MySqlConnection connection = new MySqlConnection("datasource=localhost; port=3307; username=root; " +
-            "password=; database=csharp_contact_manager_db; CharSet=utf8;");
+        readonly MySqlConnection connection = new MySqlConnection(Database.connectionString);
 
         private void Login_Register_Form_Load(object sender, EventArgs e)
         {
@@ -37,9 +36,11 @@ namespace ContactManager
 
             DataTable table = new DataTable();
 
-            MySqlCommand command = new MySqlCommand("SELECT * FROM `user` WHERE `username` = @un AND `password` = @pass", db.getConnection);
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `user` WHERE `username` = @un AND `password` = @pass", connection);
 
             command.Parameters.Add("@un", MySqlDbType.VarChar).Value = textBoxUsername.Text;
+            //string password = this.HashPassword(textBoxPassword.Text);
+            string password = textBoxPassword.Text;
             command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = textBoxPassword.Text;
 
             adapter.SelectCommand = command;
@@ -50,6 +51,11 @@ namespace ContactManager
             {
                 if (table.Rows.Count > 0) // check if this user exists
                 {
+                    // we want to display the user's username and image in the main form
+                    // to do that we need to get the user id and make it global so other form can use it
+                    int userId = Convert.ToInt32(table.Rows[0][0].ToString());
+                    Globals.setGlobalUserId(userId);
+
                     // show the main app form
                     this.DialogResult = DialogResult.OK;
                 }
@@ -66,6 +72,13 @@ namespace ContactManager
 
         }
 
+        public string HashPassword(string password)
+        {
+            string salt = SecurityHelper.GenerateSalt(70);
+            string passwordHashed = SecurityHelper.HashPassword(password, salt, 10101, 70);
+            return passwordHashed;
+        }
+
         // register button
         private void button_Register_Click(object sender, EventArgs e)
         {
@@ -73,6 +86,8 @@ namespace ContactManager
             string lastName = textBoxLName.Text;
             string username = textBoxUsernameRegister.Text;
             string password = textBoxPasswordRegister.Text;
+            string salt = SecurityHelper.GenerateSalt(70);
+            string passwordHashed = SecurityHelper.HashPassword(password, salt, 10101, 70);
 
             User user = new User();
 
@@ -86,9 +101,9 @@ namespace ContactManager
                 // we need to check if the username already exists
                 // we need to insert the new user in the database
                 // we will create that in the call User
-                if(!user.usernameExists(username)) // check if the username already exists
+                if(!user.usernameExists(username, "register")) // check if the username already exists
                 {
-                    if (user.insertUser(firstName, lastName, username, password, picture))
+                    if (user.insertUser(firstName, lastName, username, passwordHashed, picture))
                     {
                         MessageBox.Show("Registration completed successfully", "Register", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }

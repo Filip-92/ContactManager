@@ -13,8 +13,8 @@ namespace ContactManager
     class Database
     {
         // the connection
-        public static string connectionString = "datasource=[your_data_source]; port=[your_port]; username=[your_username]; " +
-            "password=[your_password]; database=[your_database_name]; CharSet=utf8;";
+        public static string connectionString = "datasource=localhost; port=3307; username=root; " +
+            "password=; database=csharp_contact_manager_db; CharSet=utf8;";
 
         MySqlConnection con = new MySqlConnection(connectionString);
 
