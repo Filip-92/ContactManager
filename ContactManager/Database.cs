@@ -5,28 +5,41 @@ using System.Text;
 using System.Data;
 using System.Threading.Tasks;
 // we need to add the mysql connector to connect our app with the mysql database
-using MySql.Data.MySqlClient;
+using MySqlConnector;
+using System.Windows.Forms;
 
 namespace ContactManager
 {
     class Database
     {
         // the connection
-        MySqlConnection con = new MySqlConnection("datasource=localhost; port=3307; username=root; " +
-            "password=; database=contact_manager_db;");
+        public static string connectionString = "datasource=[your_data_source]; port=[your_port]; username=[your_username]; " +
+            "password=[your_password]; database=[your_database_name]; CharSet=utf8;";
+
+        MySqlConnection con = new MySqlConnection(connectionString);
 
         // return the connection
         public MySqlConnection getConnection
         {
             get
             {
-                return con;
+                try
+                {
+                    return con;
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return null;
+                }
             }
         }
 
         // open the connection
         public void openConnection()
         {
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+
             if (con.State == ConnectionState.Closed)
             {
                 con.Open();

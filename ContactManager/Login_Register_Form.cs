@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySqlConnector;
 
 namespace ContactManager
 {
@@ -18,6 +19,9 @@ namespace ContactManager
             InitializeComponent();
         }
 
+        MySqlConnection connection = new MySqlConnection("datasource=localhost; port=3307; username=root; " +
+            "password=; database=csharp_contact_manager_db; CharSet=utf8;");
+
         private void Login_Register_Form_Load(object sender, EventArgs e)
         {
             //display image on the panel (close and minimize)
@@ -27,6 +31,38 @@ namespace ContactManager
         // login button
         private void button_Login_Click(object sender, EventArgs e)
         {
+            Database db = new Database();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            DataTable table = new DataTable();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `user` WHERE `username` = @un AND `password` = @pass", db.getConnection);
+
+            command.Parameters.Add("@un", MySqlDbType.VarChar).Value = textBoxUsername.Text;
+            command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = textBoxPassword.Text;
+
+            adapter.SelectCommand = command;
+
+            adapter.Fill(table);
+
+            if(VerifyFields("login")) // check for empty fields
+            {
+                if (table.Rows.Count > 0) // check if this user exists
+                {
+                    // show the main app form
+                    this.DialogResult = DialogResult.OK;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Username or Password", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Empty Username or Password", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
 
@@ -35,10 +71,12 @@ namespace ContactManager
         {
             string firstName = textBoxFName.Text;
             string lastName = textBoxLName.Text;
-            string username = textBoxUsername.Text;
-            string password = textBoxPassword.Text;
+            string username = textBoxUsernameRegister.Text;
+            string password = textBoxPasswordRegister.Text;
 
             User user = new User();
+
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
             if (VerifyFields("register"))
             {
@@ -48,7 +86,7 @@ namespace ContactManager
                 // we need to check if the username already exists
                 // we need to insert the new user in the database
                 // we will create that in the call User
-                if(user.usernameExists(username)) // check if the username already exists
+                if(!user.usernameExists(username)) // check if the username already exists
                 {
                     if (user.insertUser(firstName, lastName, username, password, picture))
                     {
@@ -78,9 +116,10 @@ namespace ContactManager
             // if the operation is register
             if (operation == "register")
             {
-                if (textBoxUsernameRegister.Text.Equals("") || textBoxPasswordRegister.Text.Equals("") 
-                    || pictureBoxProfileImage == null || textBoxFName.Text.Equals("") || textBoxLName.Text.Equals(""))
+                if (textBoxUsernameRegister.Text.Trim().Equals("") || textBoxPasswordRegister.Text.Trim().Equals("") 
+                    || pictureBoxProfileImage.Image == null)
                 {
+                    //  || textBoxFName.Text.Equals("") || textBoxLName.Text.Equals("")
                     check = false;
                 }
                 else
@@ -90,7 +129,7 @@ namespace ContactManager
             }
             else if (operation == "login")
             {
-                if (textBoxUsername.Text.Equals("") || textBoxPassword.Text.Equals(""))
+                if (textBoxUsername.Text.Trim().Equals("") || textBoxPassword.Text.Trim().Equals(""))
                 {
                     check = false;
                 }
@@ -179,6 +218,99 @@ namespace ContactManager
             }
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxProfileImage_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPasswordRegister_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxUsernameRegister_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxLName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxFName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

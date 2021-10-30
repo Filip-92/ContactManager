@@ -5,21 +5,22 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+using System.Globalization;
+using MySqlConnector;
 
 namespace ContactManager
 {
     class User
     {
         Database db = new Database();
+        readonly MySqlConnection connection = new MySqlConnection(Database.connectionString);
 
         // function to check the username
         public bool usernameExists(string username)
         {
-            string query = "SELECT * FROM 'user' WHERE 'username' =@un";
-            MySqlCommand command = new MySqlCommand(query, db.getConnection);
+            var command = new MySqlCommand("SELECT * FROM user WHERE username=@un", connection);
 
-            command.Parameters.Add("@un", MySqlDbType.VarChar).Value = username;
+            command.Parameters.AddWithValue("@un", username);
 
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
 
@@ -41,8 +42,8 @@ namespace ContactManager
         // insert a new user
         public bool insertUser(string firstName, string lastName, string username, string password, MemoryStream picture)
         {
-            MySqlCommand command = new MySqlCommand("INSERT INTO `user`(`id`, `first_name`, `last_name`, `username`, `password`, `picture`) " +
-                "VALUES (@fn, @ln, @un, @pass, @pic)", db.getConnection);
+            MySqlCommand command = new MySqlCommand("INSERT INTO `user`(`first_name`, `last_name`, `username`, `password`, `picture`) " +
+                "VALUES (@fn, @ln, @un, @pass, @pic)", connection);
 
             command.Parameters.Add("@fn", MySqlDbType.VarChar).Value = firstName;
             command.Parameters.Add("@ln", MySqlDbType.VarChar).Value = lastName;
@@ -51,6 +52,7 @@ namespace ContactManager
             command.Parameters.Add("@pic", MySqlDbType.Blob).Value = picture.ToArray();
 
             db.openConnection();
+            connection.Open();
 
             if (command.ExecuteNonQuery() == 1)
             {

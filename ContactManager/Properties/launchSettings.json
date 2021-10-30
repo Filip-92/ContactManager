@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ContactManager": {
+      "commandName": "Project",
+      "sqlDebugging": true
+    }
+  }
+}
