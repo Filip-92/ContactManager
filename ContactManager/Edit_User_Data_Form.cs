@@ -66,8 +66,6 @@ namespace ContactManager
         // button to submit the update of user data
         private void button_Edit_User_Click(object sender, EventArgs e)
         {
-            Database db = new Database();
-
             int userId = Globals.GlobalUserId;
             string firstName = textBoxFirstName.Text;
             string lastName = textBoxLastName.Text;

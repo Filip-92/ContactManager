@@ -119,7 +119,7 @@ namespace ContactManager
             }
             else
             {
-                MessageBox.Show("* Required fields - Username / Password / Image", "Register", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("* Required fields: \n \n - Username \n - Password \n - Image", "Register", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
