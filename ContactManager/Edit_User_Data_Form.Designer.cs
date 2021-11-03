@@ -225,6 +225,7 @@ namespace ContactManager
             this.button_browse.TabIndex = 1;
             this.button_browse.Text = "Change Profile Image";
             this.button_browse.UseVisualStyleBackColor = false;
+            this.button_browse.Click += new System.EventHandler(this.button_browse_Click);
             // 
             // pictureBoxProfileImage
             // 

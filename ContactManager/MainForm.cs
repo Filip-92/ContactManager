@@ -28,16 +28,6 @@ namespace ContactManager
             getImageAndUsername();
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonMinimize_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
@@ -190,6 +180,83 @@ namespace ContactManager
             {
                 MessageBox.Show("Select a group before deleting", "Edit group", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }   
+        }
+
+        // refresh the user details and image
+        private void labelRefresh_Click(object sender, EventArgs e)
+        {
+            getImageAndUsername();
+        }
+
+        // button to add contact
+        private void buttonAddContact_Click(object sender, EventArgs e)
+        {
+            // show add contact form
+            Add_Contact_Form addContactForm = new Add_Contact_Form();
+            addContactForm.Show(this);
+        }
+
+        private void buttonEditContact_Click(object sender, EventArgs e)
+        {
+            // show edit contact form
+            Edit_Contact_Form editContactForm = new Edit_Contact_Form();
+            editContactForm.Show(this);
+        }
+
+        private void buttonSelectContact_Click(object sender, EventArgs e)
+        {
+            // show a form to select the contact we want to delete
+            Select_Contact_Form selectContactForm = new Select_Contact_Form();
+            selectContactForm.ShowDialog();
+
+            try
+            {
+                // get the contact id
+                int contactId = Convert.ToInt32(selectContactForm.dataGridView1.CurrentRow.Cells[0].Value.ToString());
+                textBoxContactId.Text = contactId.ToString();
+            }
+            catch
+            {
+
+            }
+        }
+
+        // button to delete the selected contact
+        private void buttonRemoveContact_Click(object sender, EventArgs e)
+        {
+            Contact contact = new Contact();
+
+            try
+            {
+                if (!textBoxContactId.Text.Trim().Equals(""))
+                {
+                    int contactId = Convert.ToInt32(textBoxContactId.Text);
+
+                    if (contact.deleteContact(contactId))
+                    {
+                        MessageBox.Show("Contact removed successfully", "Remove Contact", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error", "Remove Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No contact selected", "Remove Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Remove Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // show the contacts list
+        private void buttonShowFullList_Click(object sender, EventArgs e)
+        {
+            Contacts_Full_List_Form contactsFullList = new Contacts_Full_List_Form();
+            contactsFullList.Show(this);
         }
     }
 }
