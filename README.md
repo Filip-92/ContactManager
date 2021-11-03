@@ -22,6 +22,6 @@ In this section the user can add a new contact with data such as:
 - Address
 - Avatar image
 
-![ContactManager4](https://user-images.githubusercontent.com/75435412/140179892-9469cb35-7454-45e1-9099-1bc33d155342.PNG)
+![ContactManager4](https://user-images.githubusercontent.com/75435412/140180060-4a323ec7-5a00-44a7-b0fa-17a63aaeb474.PNG)
 
 The user will also be able to edit existing contacts, remove the selected ones and display full list of all contacts.
