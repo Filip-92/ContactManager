@@ -13,9 +13,12 @@ namespace ContactManager
 {
     public partial class Contacts_Full_List_Form : Form
     {
+        private bool mouseDown;
+        private Point lastLocation;
         public Contacts_Full_List_Form()
         {
             InitializeComponent();
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         private void Contacts_Full_List_Load(object sender, EventArgs e)
@@ -87,7 +90,7 @@ namespace ContactManager
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Filter contacts", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -122,6 +125,28 @@ namespace ContactManager
         {
             // display the address in the textBox
             textBoxAddress.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void panel3_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

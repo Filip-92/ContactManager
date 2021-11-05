@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using MySqlConnector;
+using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Text;
 using System.Windows.Forms;
-using MySqlConnector;
 
 namespace ContactManager
 {
     public partial class MainForm : Form
     {
+        private bool mouseDown;
+        private Point lastLocation;
         public MainForm()
         {
             InitializeComponent();
@@ -20,7 +19,6 @@ namespace ContactManager
         }
 
         readonly MySqlConnection connection = new MySqlConnection(Database.connectionString);
-        Database db = new Database();
         Group group = new Group();
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -48,7 +46,7 @@ namespace ContactManager
             MySqlDataAdapter adapter = new MySqlDataAdapter(command);
 
             DataTable table = new DataTable();
-            
+
             //adapter.SelectCommand = command;
 
             adapter.Fill(table);
@@ -179,7 +177,7 @@ namespace ContactManager
             catch
             {
                 MessageBox.Show("Select a group before deleting", "Edit group", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }   
+            }
         }
 
         // refresh the user details and image
@@ -215,9 +213,9 @@ namespace ContactManager
                 int contactId = Convert.ToInt32(selectContactForm.dataGridView1.CurrentRow.Cells[0].Value.ToString());
                 textBoxContactId.Text = contactId.ToString();
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Select Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -235,6 +233,7 @@ namespace ContactManager
                     if (contact.deleteContact(contactId))
                     {
                         MessageBox.Show("Contact removed successfully", "Remove Contact", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        textBoxContactId.Clear();
                     }
                     else
                     {
@@ -257,6 +256,28 @@ namespace ContactManager
         {
             Contacts_Full_List_Form contactsFullList = new Contacts_Full_List_Form();
             contactsFullList.Show(this);
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void panel3_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

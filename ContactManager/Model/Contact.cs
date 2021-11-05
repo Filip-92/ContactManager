@@ -43,16 +43,14 @@ namespace ContactManager
 
         public bool updateContact(int id, string firstName, string lastName, int groupId, string phone, string email, string address, MemoryStream picture)
         {
-            MySqlCommand command = new MySqlCommand("UPDATE `mycontacts` SET `first_name`=@fn, `last_name`=@ln, `group_id`=@gid, `phone`=@phone, `email`=@email, `address`=@address, `picture`=@pic WHERE 'id'=@id", connection);
+            MySqlCommand command = new MySqlCommand("UPDATE `mycontacts` SET `first_name`=@fn,`last_name`=@ln,`group_id`=@gid,`phone`=@phone,`email`=@email,`address`=@ads WHERE `id`=@id", connection);
 
-            // the user id is already set to the contact
-            // the user can't set a contact to another userId
             command.Parameters.AddWithValue("@fn", MySqlDbType.VarChar).Value = firstName;
             command.Parameters.AddWithValue("@ln", MySqlDbType.VarChar).Value = lastName;
             command.Parameters.AddWithValue("@gid", MySqlDbType.Int32).Value = groupId;
             command.Parameters.AddWithValue("@phone", MySqlDbType.VarChar).Value = phone;
             command.Parameters.AddWithValue("@email", MySqlDbType.VarChar).Value = email;
-            command.Parameters.AddWithValue("@address", MySqlDbType.VarChar).Value = address;
+            command.Parameters.AddWithValue("@ads", MySqlDbType.VarChar).Value = address;
             command.Parameters.AddWithValue("@pic", MySqlDbType.Blob).Value = picture.ToArray();
             command.Parameters.AddWithValue("@id", MySqlDbType.Int32).Value = id;
 

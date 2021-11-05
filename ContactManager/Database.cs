@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using MySqlConnector;
+using System;
 using System.Data;
-using System.Threading.Tasks;
-// we need to add the mysql connector to connect our app with the mysql database
-using MySqlConnector;
+using System.Text;
 using System.Windows.Forms;
 
 namespace ContactManager
@@ -13,10 +9,17 @@ namespace ContactManager
     class Database
     {
         // the connection
-        public static string connectionString = "datasource=localhost; port=3307; username=root; " +
-            "password=; database=csharp_contact_manager_db; CharSet=utf8;";
+        public static string connectionString = "datasource=YOUR_DATASOURCE; port=YOUR_PORT; username=YOUR_USERNAME; " +
+            "password=YOUR_PASSWORD; database=YOUR_DATABASE_NAME; CharSet=utf8;";
 
-        MySqlConnection con = new MySqlConnection(connectionString);
+        private readonly string salt = "YOUR_SALT";
+
+        public string getSalt()
+        {
+            return this.salt;
+        }
+
+        MySqlConnection connection = new MySqlConnection(connectionString);
 
         // return the connection
         public MySqlConnection getConnection
@@ -25,9 +28,9 @@ namespace ContactManager
             {
                 try
                 {
-                    return con;
+                    return connection;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                     return null;
@@ -40,18 +43,18 @@ namespace ContactManager
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            if (con.State == ConnectionState.Closed)
+            if (connection.State == ConnectionState.Closed)
             {
-                con.Open();
+                connection.Open();
             }
         }
 
         // close the connection
         public void closeConnection()
         {
-            if (con.State == ConnectionState.Open)
+            if (connection.State == ConnectionState.Open)
             {
-                con.Close();
+                connection.Close();
             }
         }
     }

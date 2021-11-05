@@ -1,7 +1,7 @@
 ﻿
 namespace ContactManager
 {
-    partial class Contacts_Full_List_Form
+    partial class Select_Contact_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -29,17 +29,13 @@ namespace ContactManager
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Contacts_Full_List_Form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Select_Contact_Form));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.labelShowAll = new System.Windows.Forms.Label();
-            this.textBoxAddress = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -54,7 +50,7 @@ namespace ContactManager
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1158, 805);
+            this.panel1.Size = new System.Drawing.Size(476, 592);
             this.panel1.TabIndex = 2;
             // 
             // panel3
@@ -64,7 +60,7 @@ namespace ContactManager
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.Controls.Add(this.buttonClose);
             this.panel3.Controls.Add(this.buttonMinimize);
-            this.panel3.Location = new System.Drawing.Point(836, 3);
+            this.panel3.Location = new System.Drawing.Point(159, 3);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(314, 39);
             this.panel3.TabIndex = 3;
@@ -98,89 +94,36 @@ namespace ContactManager
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.SandyBrown;
-            this.panel2.Controls.Add(this.labelShowAll);
-            this.panel2.Controls.Add(this.textBoxAddress);
-            this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Controls.Add(this.listBox1);
             this.panel2.Location = new System.Drawing.Point(6, 45);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1144, 757);
+            this.panel2.Size = new System.Drawing.Size(464, 541);
             this.panel2.TabIndex = 0;
-            // 
-            // labelShowAll
-            // 
-            this.labelShowAll.AutoSize = true;
-            this.labelShowAll.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.labelShowAll.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
-                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.labelShowAll.ForeColor = System.Drawing.Color.Maroon;
-            this.labelShowAll.Location = new System.Drawing.Point(223, 28);
-            this.labelShowAll.Name = "labelShowAll";
-            this.labelShowAll.Size = new System.Drawing.Size(85, 24);
-            this.labelShowAll.TabIndex = 20;
-            this.labelShowAll.Text = "Show All";
-            this.labelShowAll.Click += new System.EventHandler(this.labelShowAll_Click);
-            // 
-            // textBoxAddress
-            // 
-            this.textBoxAddress.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.textBoxAddress.Location = new System.Drawing.Point(305, 656);
-            this.textBoxAddress.Multiline = true;
-            this.textBoxAddress.Name = "textBoxAddress";
-            this.textBoxAddress.Size = new System.Drawing.Size(820, 79);
-            this.textBoxAddress.TabIndex = 19;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(223, 659);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(76, 20);
-            this.label5.TabIndex = 18;
-            this.label5.Text = "Address:";
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(222, 72);
+            this.dataGridView1.Location = new System.Drawing.Point(6, 20);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(903, 568);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_ColumnHeaderMouseClick);
-            this.dataGridView1.Click += new System.EventHandler(this.dataGridView1_Click);
+            this.dataGridView1.Size = new System.Drawing.Size(452, 515);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.DoubleClick += new System.EventHandler(this.dataGridView1_DoubleClick);
             // 
-            // listBox1
-            // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(239)))), ((int)(((byte)(247)))));
-            this.listBox1.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(15, 72);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(189, 204);
-            this.listBox1.TabIndex = 0;
-            this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
-            // 
-            // Contacts_Full_List_Form
+            // Select_Contact_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1158, 805);
+            this.ClientSize = new System.Drawing.Size(476, 592);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Contacts_Full_List_Form";
-            this.Text = "Contacts_Full_List";
-            this.Load += new System.EventHandler(this.Contacts_Full_List_Load);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "Select_Contact_Form";
+            this.Text = "Select_Contact_Form";
+            this.Load += new System.EventHandler(this.Select_Contact_Form_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -193,10 +136,6 @@ namespace ContactManager
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonMinimize;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label labelShowAll;
-        private System.Windows.Forms.TextBox textBoxAddress;
-        private System.Windows.Forms.Label label5;
+        internal System.Windows.Forms.DataGridView dataGridView1;
     }
 }

@@ -1,22 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ContactManager
 {
     public partial class Edit_User_Data_Form : Form
     {
+        private bool mouseDown;
+        private Point lastLocation;
         public Edit_User_Data_Form()
         {
             InitializeComponent();
             DisplayUserData();
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         User user = new User();
@@ -34,7 +32,6 @@ namespace ContactManager
             textBoxFirstName.Text = table.Rows[0][1].ToString();
             textBoxLastName.Text = table.Rows[0][2].ToString();
             textBoxUsername.Text = table.Rows[0][3].ToString();
-            textBoxPassword.Text = table.Rows[0][4].ToString();
 
             byte[] pic = (byte[])table.Rows[0]["picture"];
             MemoryStream picture = new MemoryStream(pic);
@@ -70,14 +67,14 @@ namespace ContactManager
             string firstName = textBoxFirstName.Text;
             string lastName = textBoxLastName.Text;
             string username = textBoxUsername.Text;
-            string password = textBoxPassword.Text;
+
 
             MemoryStream pic = new MemoryStream();
             pictureBoxProfileImage.Image.Save(pic, pictureBoxProfileImage.Image.RawFormat);
 
-            if (username.Trim().Equals("") || password.Trim().Equals("")) // check empty fields
+            if (username.Trim().Equals("")) // check empty fields
             {
-                MessageBox.Show("Required Fields: Username and Password", "Edit Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Required Fields: Username", "Edit Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
@@ -85,15 +82,43 @@ namespace ContactManager
                 {
                     MessageBox.Show("This username already exists. Try another one", "Invalid Username", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if (user.updateUser(userId, firstName, lastName, username, password, pic))
+                else if (user.updateUser(userId, firstName, lastName, username, pic))
                 {
                     MessageBox.Show("Your Information has been updated", "Edit Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Something wrong", "Edit Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Something's wrong", "Edit Info", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void button_Change_Password_Click(object sender, EventArgs e)
+        {
+            Change_Password_Form changePasswordForm = new Change_Password_Form();
+            changePasswordForm.Show(this);
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void panel3_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

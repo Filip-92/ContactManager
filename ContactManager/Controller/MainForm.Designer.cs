@@ -113,7 +113,7 @@ namespace ContactManager
             this.buttonShowFullList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShowFullList.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.buttonShowFullList.ForeColor = System.Drawing.Color.White;
-            this.buttonShowFullList.Location = new System.Drawing.Point(25, 440);
+            this.buttonShowFullList.Location = new System.Drawing.Point(38, 464);
             this.buttonShowFullList.Name = "buttonShowFullList";
             this.buttonShowFullList.Size = new System.Drawing.Size(391, 69);
             this.buttonShowFullList.TabIndex = 11;
@@ -124,7 +124,7 @@ namespace ContactManager
             // textBoxContactId
             // 
             this.textBoxContactId.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.textBoxContactId.Location = new System.Drawing.Point(217, 357);
+            this.textBoxContactId.Location = new System.Drawing.Point(230, 381);
             this.textBoxContactId.Multiline = true;
             this.textBoxContactId.Name = "textBoxContactId";
             this.textBoxContactId.Size = new System.Drawing.Size(199, 36);
@@ -138,7 +138,7 @@ namespace ContactManager
             this.buttonSelectContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSelectContact.Font = new System.Drawing.Font("Rockwell", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.buttonSelectContact.ForeColor = System.Drawing.Color.White;
-            this.buttonSelectContact.Location = new System.Drawing.Point(217, 306);
+            this.buttonSelectContact.Location = new System.Drawing.Point(230, 330);
             this.buttonSelectContact.Name = "buttonSelectContact";
             this.buttonSelectContact.Size = new System.Drawing.Size(199, 39);
             this.buttonSelectContact.TabIndex = 10;
@@ -153,7 +153,7 @@ namespace ContactManager
             this.buttonRemoveContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRemoveContact.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.buttonRemoveContact.ForeColor = System.Drawing.Color.White;
-            this.buttonRemoveContact.Location = new System.Drawing.Point(25, 306);
+            this.buttonRemoveContact.Location = new System.Drawing.Point(38, 330);
             this.buttonRemoveContact.Name = "buttonRemoveContact";
             this.buttonRemoveContact.Size = new System.Drawing.Size(172, 87);
             this.buttonRemoveContact.TabIndex = 9;
@@ -168,7 +168,7 @@ namespace ContactManager
             this.buttonEditContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditContact.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.buttonEditContact.ForeColor = System.Drawing.Color.White;
-            this.buttonEditContact.Location = new System.Drawing.Point(52, 194);
+            this.buttonEditContact.Location = new System.Drawing.Point(65, 218);
             this.buttonEditContact.Name = "buttonEditContact";
             this.buttonEditContact.Size = new System.Drawing.Size(343, 69);
             this.buttonEditContact.TabIndex = 8;
@@ -183,7 +183,7 @@ namespace ContactManager
             this.buttonAddContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddContact.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.buttonAddContact.ForeColor = System.Drawing.Color.White;
-            this.buttonAddContact.Location = new System.Drawing.Point(52, 97);
+            this.buttonAddContact.Location = new System.Drawing.Point(65, 121);
             this.buttonAddContact.Name = "buttonAddContact";
             this.buttonAddContact.Size = new System.Drawing.Size(343, 69);
             this.buttonAddContact.TabIndex = 4;
@@ -206,7 +206,7 @@ namespace ContactManager
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Location = new System.Drawing.Point(468, 51);
+            this.panel4.Location = new System.Drawing.Point(465, 51);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(14, 520);
             this.panel4.TabIndex = 6;
@@ -392,6 +392,9 @@ namespace ContactManager
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(314, 53);
             this.panel3.TabIndex = 1;
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // buttonClose
             // 

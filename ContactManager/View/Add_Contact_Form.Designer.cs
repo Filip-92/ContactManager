@@ -1,7 +1,7 @@
 ﻿
 namespace ContactManager
 {
-    partial class Edit_Contact_Form
+    partial class Add_Contact_Form
     {
         /// <summary>
         /// Required designer variable.
@@ -29,16 +29,13 @@ namespace ContactManager
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Edit_Contact_Form));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Add_Contact_Form));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.buttonSelectContact = new System.Windows.Forms.Button();
-            this.textBoxContactId = new System.Windows.Forms.TextBox();
-            this.labelContactId = new System.Windows.Forms.Label();
-            this.buttonEditContact = new System.Windows.Forms.Button();
+            this.buttonAddContact = new System.Windows.Forms.Button();
             this.button_browse = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.pictureBoxContactImage = new System.Windows.Forms.PictureBox();
@@ -68,8 +65,8 @@ namespace ContactManager
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(506, 813);
-            this.panel1.TabIndex = 1;
+            this.panel1.Size = new System.Drawing.Size(518, 753);
+            this.panel1.TabIndex = 0;
             // 
             // panel3
             // 
@@ -78,10 +75,13 @@ namespace ContactManager
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.Controls.Add(this.buttonClose);
             this.panel3.Controls.Add(this.buttonMinimize);
-            this.panel3.Location = new System.Drawing.Point(186, 3);
+            this.panel3.Location = new System.Drawing.Point(204, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(314, 39);
             this.panel3.TabIndex = 3;
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // buttonClose
             // 
@@ -112,10 +112,7 @@ namespace ContactManager
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.SandyBrown;
-            this.panel2.Controls.Add(this.buttonSelectContact);
-            this.panel2.Controls.Add(this.textBoxContactId);
-            this.panel2.Controls.Add(this.labelContactId);
-            this.panel2.Controls.Add(this.buttonEditContact);
+            this.panel2.Controls.Add(this.buttonAddContact);
             this.panel2.Controls.Add(this.button_browse);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.pictureBoxContactImage);
@@ -131,65 +128,30 @@ namespace ContactManager
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.textBoxFirstName);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(6, 45);
+            this.panel2.Location = new System.Drawing.Point(12, 44);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(494, 761);
+            this.panel2.Size = new System.Drawing.Size(494, 697);
             this.panel2.TabIndex = 0;
             // 
-            // buttonSelectContact
+            // buttonAddContact
             // 
-            this.buttonSelectContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
-            this.buttonSelectContact.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSelectContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSelectContact.Font = new System.Drawing.Font("Rockwell", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.buttonSelectContact.ForeColor = System.Drawing.Color.White;
-            this.buttonSelectContact.Location = new System.Drawing.Point(322, 18);
-            this.buttonSelectContact.Name = "buttonSelectContact";
-            this.buttonSelectContact.Size = new System.Drawing.Size(134, 26);
-            this.buttonSelectContact.TabIndex = 25;
-            this.buttonSelectContact.Text = "Select contact";
-            this.buttonSelectContact.UseVisualStyleBackColor = false;
-            this.buttonSelectContact.Click += new System.EventHandler(this.buttonSelectContact_Click);
-            // 
-            // textBoxContactId
-            // 
-            this.textBoxContactId.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.textBoxContactId.Location = new System.Drawing.Point(132, 18);
-            this.textBoxContactId.Name = "textBoxContactId";
-            this.textBoxContactId.ReadOnly = true;
-            this.textBoxContactId.Size = new System.Drawing.Size(184, 26);
-            this.textBoxContactId.TabIndex = 24;
-            // 
-            // labelContactId
-            // 
-            this.labelContactId.AutoSize = true;
-            this.labelContactId.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.labelContactId.ForeColor = System.Drawing.Color.White;
-            this.labelContactId.Location = new System.Drawing.Point(93, 21);
-            this.labelContactId.Name = "labelContactId";
-            this.labelContactId.Size = new System.Drawing.Size(32, 20);
-            this.labelContactId.TabIndex = 23;
-            this.labelContactId.Text = "ID:";
-            // 
-            // buttonEditContact
-            // 
-            this.buttonEditContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(106)))));
-            this.buttonEditContact.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonEditContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonEditContact.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.buttonEditContact.ForeColor = System.Drawing.Color.White;
-            this.buttonEditContact.Location = new System.Drawing.Point(15, 678);
-            this.buttonEditContact.Name = "buttonEditContact";
-            this.buttonEditContact.Size = new System.Drawing.Size(461, 42);
-            this.buttonEditContact.TabIndex = 22;
-            this.buttonEditContact.Text = "Edit contact";
-            this.buttonEditContact.UseVisualStyleBackColor = false;
-            this.buttonEditContact.Click += new System.EventHandler(this.buttonEditContact_Click);
+            this.buttonAddContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(106)))));
+            this.buttonAddContact.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAddContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddContact.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.buttonAddContact.ForeColor = System.Drawing.Color.White;
+            this.buttonAddContact.Location = new System.Drawing.Point(14, 642);
+            this.buttonAddContact.Name = "buttonAddContact";
+            this.buttonAddContact.Size = new System.Drawing.Size(461, 42);
+            this.buttonAddContact.TabIndex = 22;
+            this.buttonAddContact.Text = "Add contact";
+            this.buttonAddContact.UseVisualStyleBackColor = false;
+            this.buttonAddContact.Click += new System.EventHandler(this.buttonAddContact_Click);
             // 
             // button_browse
             // 
             this.button_browse.Font = new System.Drawing.Font("Rockwell", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.button_browse.Location = new System.Drawing.Point(132, 614);
+            this.button_browse.Location = new System.Drawing.Point(131, 578);
             this.button_browse.Name = "button_browse";
             this.button_browse.Size = new System.Drawing.Size(208, 34);
             this.button_browse.TabIndex = 21;
@@ -202,7 +164,7 @@ namespace ContactManager
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(56, 403);
+            this.label7.Location = new System.Drawing.Point(55, 367);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(69, 20);
             this.label7.TabIndex = 20;
@@ -212,7 +174,7 @@ namespace ContactManager
             // 
             this.pictureBoxContactImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.pictureBoxContactImage.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxContactImage.Image")));
-            this.pictureBoxContactImage.Location = new System.Drawing.Point(132, 403);
+            this.pictureBoxContactImage.Location = new System.Drawing.Point(131, 367);
             this.pictureBoxContactImage.Name = "pictureBoxContactImage";
             this.pictureBoxContactImage.Size = new System.Drawing.Size(208, 204);
             this.pictureBoxContactImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -223,7 +185,7 @@ namespace ContactManager
             // 
             this.comboBoxGroup.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.comboBoxGroup.FormattingEnabled = true;
-            this.comboBoxGroup.Location = new System.Drawing.Point(132, 163);
+            this.comboBoxGroup.Location = new System.Drawing.Point(131, 127);
             this.comboBoxGroup.Name = "comboBoxGroup";
             this.comboBoxGroup.Size = new System.Drawing.Size(324, 28);
             this.comboBoxGroup.TabIndex = 18;
@@ -231,7 +193,7 @@ namespace ContactManager
             // textBoxAddress
             // 
             this.textBoxAddress.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.textBoxAddress.Location = new System.Drawing.Point(132, 304);
+            this.textBoxAddress.Location = new System.Drawing.Point(131, 268);
             this.textBoxAddress.Multiline = true;
             this.textBoxAddress.Name = "textBoxAddress";
             this.textBoxAddress.Size = new System.Drawing.Size(328, 79);
@@ -242,7 +204,7 @@ namespace ContactManager
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(50, 307);
+            this.label5.Location = new System.Drawing.Point(49, 271);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(76, 20);
             this.label5.TabIndex = 16;
@@ -251,7 +213,7 @@ namespace ContactManager
             // textBoxEmail
             // 
             this.textBoxEmail.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.textBoxEmail.Location = new System.Drawing.Point(132, 258);
+            this.textBoxEmail.Location = new System.Drawing.Point(131, 222);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(328, 26);
             this.textBoxEmail.TabIndex = 15;
@@ -261,7 +223,7 @@ namespace ContactManager
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(67, 261);
+            this.label6.Location = new System.Drawing.Point(66, 225);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(59, 20);
             this.label6.TabIndex = 14;
@@ -270,7 +232,7 @@ namespace ContactManager
             // textBoxPhone
             // 
             this.textBoxPhone.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.textBoxPhone.Location = new System.Drawing.Point(132, 212);
+            this.textBoxPhone.Location = new System.Drawing.Point(131, 176);
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(326, 26);
             this.textBoxPhone.TabIndex = 13;
@@ -280,7 +242,7 @@ namespace ContactManager
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(67, 215);
+            this.label3.Location = new System.Drawing.Point(66, 179);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 20);
             this.label3.TabIndex = 12;
@@ -291,7 +253,7 @@ namespace ContactManager
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(63, 166);
+            this.label4.Location = new System.Drawing.Point(62, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 20);
             this.label4.TabIndex = 10;
@@ -300,7 +262,7 @@ namespace ContactManager
             // textBoxLastName
             // 
             this.textBoxLastName.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.textBoxLastName.Location = new System.Drawing.Point(132, 115);
+            this.textBoxLastName.Location = new System.Drawing.Point(131, 79);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(324, 26);
             this.textBoxLastName.TabIndex = 9;
@@ -310,7 +272,7 @@ namespace ContactManager
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(29, 118);
+            this.label2.Location = new System.Drawing.Point(28, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(97, 20);
             this.label2.TabIndex = 8;
@@ -319,7 +281,7 @@ namespace ContactManager
             // textBoxFirstName
             // 
             this.textBoxFirstName.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.textBoxFirstName.Location = new System.Drawing.Point(132, 65);
+            this.textBoxFirstName.Location = new System.Drawing.Point(131, 29);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(324, 26);
             this.textBoxFirstName.TabIndex = 7;
@@ -329,22 +291,22 @@ namespace ContactManager
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(27, 68);
+            this.label1.Location = new System.Drawing.Point(26, 32);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(99, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "First Name:";
             // 
-            // Edit_Contact_Form
+            // Add_Contact_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(506, 813);
+            this.ClientSize = new System.Drawing.Size(518, 753);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Edit_Contact_Form";
-            this.Text = "Edit_Contact_Form";
-            this.Load += new System.EventHandler(this.Edit_Contact_Form_Load);
+            this.Name = "Add_Contact_Form";
+            this.Text = "Add_Contact_Form";
+            this.Load += new System.EventHandler(this.Add_Contact_Form_Load);
             this.panel1.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
@@ -357,15 +319,14 @@ namespace ContactManager
         #endregion
 
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonMinimize;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button buttonEditContact;
-        private System.Windows.Forms.Button button_browse;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.PictureBox pictureBoxContactImage;
-        private System.Windows.Forms.ComboBox comboBoxGroup;
+        private System.Windows.Forms.TextBox textBoxLastName;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxFirstName;
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxAddress;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxEmail;
@@ -373,12 +334,10 @@ namespace ContactManager
         private System.Windows.Forms.TextBox textBoxPhone;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBoxLastName;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxFirstName;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxContactId;
-        private System.Windows.Forms.Label labelContactId;
-        private System.Windows.Forms.Button buttonSelectContact;
+        private System.Windows.Forms.ComboBox comboBoxGroup;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.PictureBox pictureBoxContactImage;
+        private System.Windows.Forms.Button button_browse;
+        private System.Windows.Forms.Button buttonAddContact;
     }
 }

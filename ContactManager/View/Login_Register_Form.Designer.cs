@@ -75,7 +75,6 @@ namespace ContactManager
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(315, 646);
             this.panel1.TabIndex = 0;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel3
             // 
@@ -88,7 +87,9 @@ namespace ContactManager
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(314, 37);
             this.panel3.TabIndex = 1;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // buttonMinimize
             // 
@@ -143,7 +144,6 @@ namespace ContactManager
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(828, 609);
             this.panel2.TabIndex = 0;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // labelGoToLogin
             // 
@@ -210,7 +210,6 @@ namespace ContactManager
             this.label9.Size = new System.Drawing.Size(65, 19);
             this.label9.TabIndex = 17;
             this.label9.Text = "Picture:";
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // pictureBoxProfileImage
             // 
@@ -223,7 +222,6 @@ namespace ContactManager
             this.pictureBoxProfileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfileImage.TabIndex = 16;
             this.pictureBoxProfileImage.TabStop = false;
-            this.pictureBoxProfileImage.Click += new System.EventHandler(this.pictureBoxProfileImage_Click);
             // 
             // textBoxPasswordRegister
             // 
@@ -235,7 +233,6 @@ namespace ContactManager
             this.textBoxPasswordRegister.Size = new System.Drawing.Size(146, 29);
             this.textBoxPasswordRegister.TabIndex = 15;
             this.textBoxPasswordRegister.UseSystemPasswordChar = true;
-            this.textBoxPasswordRegister.TextChanged += new System.EventHandler(this.textBoxPasswordRegister_TextChanged);
             // 
             // textBoxUsernameRegister
             // 
@@ -246,7 +243,6 @@ namespace ContactManager
             this.textBoxUsernameRegister.Name = "textBoxUsernameRegister";
             this.textBoxUsernameRegister.Size = new System.Drawing.Size(146, 29);
             this.textBoxUsernameRegister.TabIndex = 14;
-            this.textBoxUsernameRegister.TextChanged += new System.EventHandler(this.textBoxUsernameRegister_TextChanged);
             // 
             // label7
             // 
@@ -259,7 +255,6 @@ namespace ContactManager
             this.label7.Size = new System.Drawing.Size(84, 19);
             this.label7.TabIndex = 13;
             this.label7.Text = "Password:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
@@ -272,7 +267,6 @@ namespace ContactManager
             this.label8.Size = new System.Drawing.Size(89, 19);
             this.label8.TabIndex = 12;
             this.label8.Text = "Username:";
-            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // textBoxLName
             // 
@@ -283,7 +277,6 @@ namespace ContactManager
             this.textBoxLName.Name = "textBoxLName";
             this.textBoxLName.Size = new System.Drawing.Size(146, 29);
             this.textBoxLName.TabIndex = 11;
-            this.textBoxLName.TextChanged += new System.EventHandler(this.textBoxLName_TextChanged);
             // 
             // textBoxFName
             // 
@@ -294,7 +287,6 @@ namespace ContactManager
             this.textBoxFName.Name = "textBoxFName";
             this.textBoxFName.Size = new System.Drawing.Size(146, 29);
             this.textBoxFName.TabIndex = 10;
-            this.textBoxFName.TextChanged += new System.EventHandler(this.textBoxFName_TextChanged);
             // 
             // label5
             // 
@@ -307,7 +299,6 @@ namespace ContactManager
             this.label5.Size = new System.Drawing.Size(91, 19);
             this.label5.TabIndex = 9;
             this.label5.Text = "Last Name:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -320,7 +311,6 @@ namespace ContactManager
             this.label6.Size = new System.Drawing.Size(94, 19);
             this.label6.TabIndex = 8;
             this.label6.Text = "First Name:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label4
             // 
@@ -334,7 +324,6 @@ namespace ContactManager
             this.label4.Size = new System.Drawing.Size(242, 30);
             this.label4.TabIndex = 7;
             this.label4.Text = "Create new Account";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // button_Login
             // 
@@ -360,7 +349,6 @@ namespace ContactManager
             this.textBoxPassword.Size = new System.Drawing.Size(174, 29);
             this.textBoxPassword.TabIndex = 5;
             this.textBoxPassword.UseSystemPasswordChar = true;
-            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
             // 
             // textBoxUsername
             // 
@@ -371,7 +359,6 @@ namespace ContactManager
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(174, 29);
             this.textBoxUsername.TabIndex = 4;
-            this.textBoxUsername.TextChanged += new System.EventHandler(this.textBoxUsername_TextChanged);
             // 
             // label3
             // 
@@ -384,7 +371,6 @@ namespace ContactManager
             this.label3.Size = new System.Drawing.Size(84, 19);
             this.label3.TabIndex = 3;
             this.label3.Text = "Password:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -397,7 +383,6 @@ namespace ContactManager
             this.label2.Size = new System.Drawing.Size(89, 19);
             this.label2.TabIndex = 2;
             this.label2.Text = "Username:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label1
             // 
@@ -411,7 +396,6 @@ namespace ContactManager
             this.label1.Size = new System.Drawing.Size(180, 30);
             this.label1.TabIndex = 1;
             this.label1.Text = "Account Login";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // timer1
             // 

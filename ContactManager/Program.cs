@@ -21,7 +21,6 @@ namespace ContactManager
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Login_Register_Form());
 
             // display the main form if the login from dialog result = OK
             Login_Register_Form fLogin = new Login_Register_Form();
@@ -33,11 +32,6 @@ namespace ContactManager
             {
                 Application.Exit();
             }
-        }
-
-        public static void ConfigureServices(IServiceCollection services)
-        {
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         }
     }
 }

@@ -35,9 +35,8 @@ namespace ContactManager
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button_Change_Password = new System.Windows.Forms.Button();
             this.button_Edit_User = new System.Windows.Forms.Button();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxLastName = new System.Windows.Forms.TextBox();
@@ -74,6 +73,9 @@ namespace ContactManager
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(314, 39);
             this.panel3.TabIndex = 2;
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // buttonClose
             // 
@@ -104,9 +106,8 @@ namespace ContactManager
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
+            this.panel2.Controls.Add(this.button_Change_Password);
             this.panel2.Controls.Add(this.button_Edit_User);
-            this.panel2.Controls.Add(this.textBoxPassword);
-            this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.textBoxUsername);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.textBoxLastName);
@@ -119,6 +120,21 @@ namespace ContactManager
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(670, 339);
             this.panel2.TabIndex = 0;
+            // 
+            // button_Change_Password
+            // 
+            this.button_Change_Password.BackColor = System.Drawing.Color.DarkOrange;
+            this.button_Change_Password.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_Change_Password.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Change_Password.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.button_Change_Password.ForeColor = System.Drawing.Color.White;
+            this.button_Change_Password.Location = new System.Drawing.Point(310, 204);
+            this.button_Change_Password.Name = "button_Change_Password";
+            this.button_Change_Password.Size = new System.Drawing.Size(326, 41);
+            this.button_Change_Password.TabIndex = 11;
+            this.button_Change_Password.Text = "Change Password";
+            this.button_Change_Password.UseVisualStyleBackColor = false;
+            this.button_Change_Password.Click += new System.EventHandler(this.button_Change_Password_Click);
             // 
             // button_Edit_User
             // 
@@ -134,25 +150,6 @@ namespace ContactManager
             this.button_Edit_User.Text = "Edit";
             this.button_Edit_User.UseVisualStyleBackColor = false;
             this.button_Edit_User.Click += new System.EventHandler(this.button_Edit_User_Click);
-            // 
-            // textBoxPassword
-            // 
-            this.textBoxPassword.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.textBoxPassword.Location = new System.Drawing.Point(417, 202);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(219, 26);
-            this.textBoxPassword.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(322, 205);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 20);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Password:";
             // 
             // textBoxUsername
             // 
@@ -263,8 +260,6 @@ namespace ContactManager
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.Button buttonMinimize;
-        private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxLastName;
@@ -274,5 +269,6 @@ namespace ContactManager
         private System.Windows.Forms.PictureBox pictureBoxProfileImage;
         private System.Windows.Forms.Button button_Edit_User;
         private System.Windows.Forms.TextBox textBoxFirstName;
+        private System.Windows.Forms.Button button_Change_Password;
     }
 }

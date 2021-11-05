@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySqlConnector;
 
@@ -14,9 +10,12 @@ namespace ContactManager
 {
     public partial class Login_Register_Form : Form
     {
+        private bool mouseDown;
+        private Point lastLocation;
         public Login_Register_Form()
         {
             InitializeComponent();
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         readonly MySqlConnection connection = new MySqlConnection(Database.connectionString);
@@ -39,9 +38,12 @@ namespace ContactManager
             MySqlCommand command = new MySqlCommand("SELECT * FROM `user` WHERE `username` = @un AND `password` = @pass", connection);
 
             command.Parameters.Add("@un", MySqlDbType.VarChar).Value = textBoxUsername.Text;
-            //string password = this.HashPassword(textBoxPassword.Text);
+
             string password = textBoxPassword.Text;
-            command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = textBoxPassword.Text;
+            string salt = db.getSalt();
+            string passwordHashed = SecurityHelper.HashPassword(password, salt, 10101, 70);
+
+            command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = passwordHashed;
 
             adapter.SelectCommand = command;
 
@@ -68,25 +70,19 @@ namespace ContactManager
             {
                 MessageBox.Show("Empty Username or Password", "Login error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-
-        }
-
-        public string HashPassword(string password)
-        {
-            string salt = SecurityHelper.GenerateSalt(70);
-            string passwordHashed = SecurityHelper.HashPassword(password, salt, 10101, 70);
-            return passwordHashed;
         }
 
         // register button
         private void button_Register_Click(object sender, EventArgs e)
         {
+            Database db = new Database();
+
             string firstName = textBoxFName.Text;
             string lastName = textBoxLName.Text;
             string username = textBoxUsernameRegister.Text;
+
             string password = textBoxPasswordRegister.Text;
-            string salt = SecurityHelper.GenerateSalt(70);
+            string salt = db.getSalt();
             string passwordHashed = SecurityHelper.HashPassword(password, salt, 10101, 70);
 
             User user = new User();
@@ -201,11 +197,6 @@ namespace ContactManager
         // when this timer will start we will show only the register part
         private void timer1_Tick(object sender, EventArgs e)
         {
-            // - 320 is where you can see the register part
-            // the first 320 is where the login part is displayed
-            // so the panel need to go outside the form by 320
-            // and the same when we want to show the login part
-            // we need to set the location (X) of the panel to 0
             if (panel2.Location.X > -320)
             {
                 panel2.Location = new Point(panel2.Location.X - 10, panel2.Location.Y);
@@ -233,99 +224,26 @@ namespace ContactManager
             }
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
         {
-
+            mouseDown = true;
+            lastLocation = e.Location;
         }
 
-        private void panel3_Paint(object sender, PaintEventArgs e)
+        private void panel3_MouseMove(object sender, MouseEventArgs e)
         {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
 
+                this.Update();
+            }
         }
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
+        private void panel3_MouseUp(object sender, MouseEventArgs e)
         {
-
-        }
-
-        private void label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBoxProfileImage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPasswordRegister_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxUsernameRegister_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxLName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxFName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxUsername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            mouseDown = false;
         }
     }
 }

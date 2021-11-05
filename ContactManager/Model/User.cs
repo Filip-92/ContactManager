@@ -65,7 +65,6 @@ namespace ContactManager
             command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = password;
             command.Parameters.Add("@pic", MySqlDbType.Blob).Value = picture.ToArray();
 
-            db.openConnection();
             connection.Open();
 
             if (command.ExecuteNonQuery() == 1)
@@ -98,14 +97,13 @@ namespace ContactManager
         }
 
         // create a function to edit the user data
-        public bool updateUser(int userId, string firstName, string lastName, string username, string password, MemoryStream picture)
+        public bool updateUser(int userId, string firstName, string lastName, string username, MemoryStream picture)
         {
-            MySqlCommand command = new MySqlCommand("UPDATE user SET first_name=@fn, last_name=@ln, username=@un, password=@pass, picture=@pic WHERE id=@uid", connection);
+            MySqlCommand command = new MySqlCommand("UPDATE user SET first_name=@fn, last_name=@ln, username=@un, picture=@pic WHERE id=@uid", connection);
 
             command.Parameters.AddWithValue("@fn", MySqlDbType.VarChar).Value = firstName;
             command.Parameters.AddWithValue("@ln", MySqlDbType.VarChar).Value = lastName;
             command.Parameters.AddWithValue("@un", MySqlDbType.VarChar).Value = username;
-            command.Parameters.AddWithValue("@pass", MySqlDbType.VarChar).Value = password;
             command.Parameters.AddWithValue("@pic", MySqlDbType.Blob).Value = picture.ToArray();
             command.Parameters.AddWithValue("@uid", MySqlDbType.Int32).Value = userId;
 
@@ -118,7 +116,46 @@ namespace ContactManager
             }
             else
             {
-                db.closeConnection();
+                connection.Close();
+                return false;
+            }
+        }
+
+        public DataTable passwordMatches(int userId, string oldPassword)
+        {
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            DataTable table = new DataTable();
+
+            MySqlCommand command = new MySqlCommand("SELECT * FROM `user` WHERE `id` = @id AND `password` = @pass", connection);
+
+            command.Parameters.Add("@id", MySqlDbType.Int32).Value = Globals.GlobalUserId;
+            command.Parameters.Add("@pass", MySqlDbType.VarChar).Value = oldPassword;
+
+            adapter.SelectCommand = command;
+
+            adapter.Fill(table);
+
+            return table;
+        }
+
+        public bool changePassword(int userId, string newPassword)
+        {
+            MySqlCommand command = new MySqlCommand("UPDATE user SET password=@newpass WHERE id=@uid", connection);
+
+            command.Parameters.AddWithValue("@newpass", MySqlDbType.VarChar).Value = newPassword;
+            command.Parameters.AddWithValue("@uid", MySqlDbType.Int32).Value = userId;
+
+            connection.Open();
+
+            if (command.ExecuteNonQuery() == 1)
+            {
+                connection.Close();
+                return true;
+            }
+            else
+            {
+                connection.Close();
                 return false;
             }
         }

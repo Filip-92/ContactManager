@@ -11,6 +11,7 @@ namespace ContactManager
         public Edit_Contact_Form()
         {
             InitializeComponent();
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         private void Edit_Contact_Form_Load(object sender, EventArgs e)
@@ -68,7 +69,7 @@ namespace ContactManager
                 textBoxContactId.Text = table.Rows[0]["id"].ToString();
                 textBoxFirstName.Text = table.Rows[0]["first_name"].ToString();
                 textBoxLastName.Text = table.Rows[0]["last_name"].ToString();
-                comboBoxGroup.SelectedValue = textBoxContactId.Text = table.Rows[0]["group_id"].ToString();
+                comboBoxGroup.SelectedValue = table.Rows[0]["group_id"].ToString();
                 textBoxPhone.Text = table.Rows[0]["phone"].ToString();
                 textBoxEmail.Text = table.Rows[0]["email"].ToString();
                 textBoxAddress.Text = table.Rows[0]["address"].ToString();
@@ -77,9 +78,9 @@ namespace ContactManager
                 MemoryStream picture = new MemoryStream(pic);
                 pictureBoxContactImage.Image = Image.FromStream(picture);
             }
-            catch
+            catch (Exception ex)
             {
-
+                MessageBox.Show(ex.Message, "Edit Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }   
         }
 
@@ -109,7 +110,7 @@ namespace ContactManager
                 }
                 else
                 {
-                    MessageBox.Show("Error", "Edit Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Something's wrong", "Edit Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)

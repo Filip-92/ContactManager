@@ -1,26 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ContactManager
 {
     public partial class Add_Contact_Form : Form
     {
+        private bool mouseDown;
+        private Point lastLocation;
         public Add_Contact_Form()
         {
             InitializeComponent();
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
         }
 
         private void Add_Contact_Form_Load(object sender, EventArgs e)
         {
-            //panel3.BackgroundImage = Image.FromFile("/../../images/img1.png");
             getGroups();
         }
 
@@ -90,6 +86,28 @@ namespace ContactManager
             {
                 pictureBoxContactImage.Image = Image.FromFile(opf.FileName);
             }
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void panel3_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }
