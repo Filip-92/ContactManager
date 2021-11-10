@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -53,20 +53,27 @@ namespace ContactManager
 
             try
             {
-                // get group id
-                int groupId = (int) comboBoxGroup.SelectedValue;
-
-                // get image
-                MemoryStream pic = new MemoryStream();
-                pictureBoxContactImage.Image.Save(pic, pictureBoxContactImage.Image.RawFormat);
-
-                if (contact.insertContact(firstName, lastName, userId, groupId, phone, email, address, pic))
+                if (comboBoxGroup.SelectedValue != null)
                 {
-                    MessageBox.Show("New contact added", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // get group id
+                    int groupId = (int)comboBoxGroup.SelectedValue;
+
+                    // get image
+                    MemoryStream pic = new MemoryStream();
+                    pictureBoxContactImage.Image.Save(pic, pictureBoxContactImage.Image.RawFormat);
+
+                    if (contact.insertContact(firstName, lastName, userId, groupId, phone, email, address, pic))
+                    {
+                        MessageBox.Show("New contact added", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Error", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("You must create a group first", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch(Exception ex)
