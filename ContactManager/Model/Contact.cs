@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +12,52 @@ namespace ContactManager
     class Contact
     {
         readonly MySqlConnection connection = new MySqlConnection(Database.connectionString);
-        Database db = new Database();
+
+        public bool contactExists(string firstName, string lastName, string operation, int userId = 0, int contactId = 0)
+        {
+            string query = "";
+
+            var command = new MySqlCommand();
+
+            if (operation == "add")
+            {
+                // if a new contact already exists
+                query = "SELECT * FROM mycontacts WHERE first_name=@fname AND last_name=@lname AND userId=@uid";
+
+                command.Parameters.AddWithValue("@fname", MySqlDbType.VarChar).Value = firstName;
+                command.Parameters.AddWithValue("@lname", MySqlDbType.VarChar).Value = lastName;
+                command.Parameters.AddWithValue("@uid", MySqlDbType.Int32).Value = userId;
+            }
+            else if (operation == "edit")
+            {
+                // check if the user enters a contact that already exists (not including the current contact)
+                query = "SELECT * FROM mycontacts WHERE first_name=@fname AND last_name=@lname AND userId=@uid AND id <> @cid";
+
+                command.Parameters.AddWithValue("@fname", MySqlDbType.VarChar).Value = firstName;
+                command.Parameters.AddWithValue("@lname", MySqlDbType.VarChar).Value = lastName;
+                command.Parameters.AddWithValue("@uid", MySqlDbType.Int32).Value = userId;
+                command.Parameters.AddWithValue("@cid", MySqlDbType.Int32).Value = contactId;
+            }
+
+            command.Connection = connection;
+            command.CommandText = query;
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter(command);
+
+            DataTable table = new DataTable();
+
+            adapter.Fill(table);
+
+            // if the contact exists, return true
+            if (table.Rows.Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
         public bool insertContact(string firstName, string lastName, int userId, int groupId, string phone, string email, string address, MemoryStream picture)
         {
