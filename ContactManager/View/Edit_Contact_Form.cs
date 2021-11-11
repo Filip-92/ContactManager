@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -104,13 +104,20 @@ namespace ContactManager
                 MemoryStream pic = new MemoryStream();
                 pictureBoxContactImage.Image.Save(pic, pictureBoxContactImage.Image.RawFormat);
 
-                if (contact.updateContact(contactId, firstName, lastName, groupId, phone, email, address, pic))
+                if(!contact.contactExists(firstName, lastName, "edit", Globals.GlobalUserId, contactId))
                 {
-                    MessageBox.Show("Contact data updated", "Edit Contact", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (contact.updateContact(contactId, firstName, lastName, groupId, phone, email, address, pic))
+                    {
+                        MessageBox.Show("Contact data updated", "Edit Contact", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Something's wrong", "Edit Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Something's wrong", "Edit Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Contact with such First name and Last name already exists, try another", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception ex)
