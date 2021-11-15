@@ -36,6 +36,7 @@ namespace ContactManager
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button_Select_Cropped_Area = new System.Windows.Forms.Button();
             this.labelGoToLogin = new System.Windows.Forms.Label();
             this.labelGoToRegister = new System.Windows.Forms.Label();
             this.button_Register = new System.Windows.Forms.Button();
@@ -73,7 +74,7 @@ namespace ContactManager
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(315, 646);
+            this.panel1.Size = new System.Drawing.Size(313, 646);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -119,6 +120,7 @@ namespace ContactManager
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(49)))), ((int)(((byte)(63)))));
+            this.panel2.Controls.Add(this.button_Select_Cropped_Area);
             this.panel2.Controls.Add(this.labelGoToLogin);
             this.panel2.Controls.Add(this.labelGoToRegister);
             this.panel2.Controls.Add(this.button_Register);
@@ -144,6 +146,20 @@ namespace ContactManager
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(828, 609);
             this.panel2.TabIndex = 0;
+            // 
+            // button_Select_Cropped_Area
+            // 
+            this.button_Select_Cropped_Area.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button_Select_Cropped_Area.Enabled = false;
+            this.button_Select_Cropped_Area.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.button_Select_Cropped_Area.ForeColor = System.Drawing.Color.White;
+            this.button_Select_Cropped_Area.Location = new System.Drawing.Point(345, 422);
+            this.button_Select_Cropped_Area.Name = "button_Select_Cropped_Area";
+            this.button_Select_Cropped_Area.Size = new System.Drawing.Size(94, 48);
+            this.button_Select_Cropped_Area.TabIndex = 23;
+            this.button_Select_Cropped_Area.Text = "Crop image";
+            this.button_Select_Cropped_Area.UseVisualStyleBackColor = false;
+            this.button_Select_Cropped_Area.Click += new System.EventHandler(this.button_Select_Cropped_Area_Click);
             // 
             // labelGoToLogin
             // 
@@ -179,7 +195,7 @@ namespace ContactManager
             this.button_Register.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Register.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button_Register.ForeColor = System.Drawing.Color.White;
-            this.button_Register.Location = new System.Drawing.Point(376, 451);
+            this.button_Register.Location = new System.Drawing.Point(376, 500);
             this.button_Register.Name = "button_Register";
             this.button_Register.Size = new System.Drawing.Size(217, 41);
             this.button_Register.TabIndex = 19;
@@ -191,9 +207,9 @@ namespace ContactManager
             // 
             this.button_browse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_browse.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_browse.Location = new System.Drawing.Point(447, 392);
+            this.button_browse.Location = new System.Drawing.Point(447, 442);
             this.button_browse.Name = "button_browse";
-            this.button_browse.Size = new System.Drawing.Size(146, 28);
+            this.button_browse.Size = new System.Drawing.Size(164, 28);
             this.button_browse.TabIndex = 18;
             this.button_browse.Text = "Change picture";
             this.button_browse.UseVisualStyleBackColor = true;
@@ -205,7 +221,7 @@ namespace ContactManager
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(376, 286);
+            this.label9.Location = new System.Drawing.Point(364, 286);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 19);
             this.label9.TabIndex = 17;
@@ -218,10 +234,14 @@ namespace ContactManager
             this.pictureBoxProfileImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBoxProfileImage.Location = new System.Drawing.Point(447, 286);
             this.pictureBoxProfileImage.Name = "pictureBoxProfileImage";
-            this.pictureBoxProfileImage.Size = new System.Drawing.Size(146, 109);
+            this.pictureBoxProfileImage.Size = new System.Drawing.Size(164, 155);
             this.pictureBoxProfileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfileImage.TabIndex = 16;
             this.pictureBoxProfileImage.TabStop = false;
+            this.pictureBoxProfileImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxProfileImage_MouseDown);
+            this.pictureBoxProfileImage.MouseEnter += new System.EventHandler(this.pictureBoxProfileImage_MouseEnter);
+            this.pictureBoxProfileImage.MouseLeave += new System.EventHandler(this.pictureBoxProfileImage_MouseLeave);
+            this.pictureBoxProfileImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxProfileImage_MouseMove);
             // 
             // textBoxPasswordRegister
             // 
@@ -230,7 +250,7 @@ namespace ContactManager
             this.textBoxPasswordRegister.ForeColor = System.Drawing.Color.White;
             this.textBoxPasswordRegister.Location = new System.Drawing.Point(447, 236);
             this.textBoxPasswordRegister.Name = "textBoxPasswordRegister";
-            this.textBoxPasswordRegister.Size = new System.Drawing.Size(146, 29);
+            this.textBoxPasswordRegister.Size = new System.Drawing.Size(164, 29);
             this.textBoxPasswordRegister.TabIndex = 15;
             this.textBoxPasswordRegister.UseSystemPasswordChar = true;
             // 
@@ -241,7 +261,7 @@ namespace ContactManager
             this.textBoxUsernameRegister.ForeColor = System.Drawing.Color.White;
             this.textBoxUsernameRegister.Location = new System.Drawing.Point(447, 188);
             this.textBoxUsernameRegister.Name = "textBoxUsernameRegister";
-            this.textBoxUsernameRegister.Size = new System.Drawing.Size(146, 29);
+            this.textBoxUsernameRegister.Size = new System.Drawing.Size(164, 29);
             this.textBoxUsernameRegister.TabIndex = 14;
             // 
             // label7
@@ -250,7 +270,7 @@ namespace ContactManager
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(357, 241);
+            this.label7.Location = new System.Drawing.Point(345, 241);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(84, 19);
             this.label7.TabIndex = 13;
@@ -262,7 +282,7 @@ namespace ContactManager
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(352, 193);
+            this.label8.Location = new System.Drawing.Point(340, 193);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 19);
             this.label8.TabIndex = 12;
@@ -275,7 +295,7 @@ namespace ContactManager
             this.textBoxLName.ForeColor = System.Drawing.Color.White;
             this.textBoxLName.Location = new System.Drawing.Point(447, 142);
             this.textBoxLName.Name = "textBoxLName";
-            this.textBoxLName.Size = new System.Drawing.Size(146, 29);
+            this.textBoxLName.Size = new System.Drawing.Size(164, 29);
             this.textBoxLName.TabIndex = 11;
             // 
             // textBoxFName
@@ -285,7 +305,7 @@ namespace ContactManager
             this.textBoxFName.ForeColor = System.Drawing.Color.White;
             this.textBoxFName.Location = new System.Drawing.Point(447, 95);
             this.textBoxFName.Name = "textBoxFName";
-            this.textBoxFName.Size = new System.Drawing.Size(146, 29);
+            this.textBoxFName.Size = new System.Drawing.Size(164, 29);
             this.textBoxFName.TabIndex = 10;
             // 
             // label5
@@ -294,7 +314,7 @@ namespace ContactManager
             this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(352, 147);
+            this.label5.Location = new System.Drawing.Point(340, 147);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(91, 19);
             this.label5.TabIndex = 9;
@@ -306,7 +326,7 @@ namespace ContactManager
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Rockwell", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(352, 100);
+            this.label6.Location = new System.Drawing.Point(340, 100);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(94, 19);
             this.label6.TabIndex = 8;
@@ -411,7 +431,7 @@ namespace ContactManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(315, 646);
+            this.ClientSize = new System.Drawing.Size(313, 646);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login_Register_Form";
@@ -446,7 +466,6 @@ namespace ContactManager
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.PictureBox pictureBoxProfileImage;
         private System.Windows.Forms.Button button_browse;
         private System.Windows.Forms.Button button_Register;
         private System.Windows.Forms.Panel panel3;
@@ -456,5 +475,7 @@ namespace ContactManager
         private System.Windows.Forms.Label labelGoToRegister;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Timer timer2;
+        public System.Windows.Forms.PictureBox pictureBoxProfileImage;
+        private System.Windows.Forms.Button button_Select_Cropped_Area;
     }
 }
