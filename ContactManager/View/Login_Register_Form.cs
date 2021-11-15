@@ -334,7 +334,7 @@ namespace ContactManager
                     graphics.Dispose();
                 }
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Cropping out of bounds", "Cropping Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
