@@ -74,7 +74,7 @@ namespace ContactManager
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(313, 646);
+            this.panel1.Size = new System.Drawing.Size(312, 646);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -431,7 +431,7 @@ namespace ContactManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(313, 646);
+            this.ClientSize = new System.Drawing.Size(312, 646);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login_Register_Form";
