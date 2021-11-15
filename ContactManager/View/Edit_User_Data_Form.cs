@@ -120,5 +120,30 @@ namespace ContactManager
         {
             mouseDown = false;
         }
+
+        private void button_Remove_User_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int userId = Globals.GlobalUserId;
+
+                if (MessageBox.Show("Are you sure you want to remove your account?", "Remove account", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (user.deleteAccount(userId))
+                    {
+                        MessageBox.Show("Account deleted", "Remove account", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        Application.Exit();
+                    }
+                    else
+                    {
+                        MessageBox.Show("User couldn't be deleted", "Remove account", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Remove account", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

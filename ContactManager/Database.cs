@@ -9,10 +9,10 @@ namespace ContactManager
     class Database
     {
         // the connection
-        public static string connectionString = "datasource=YOUR_DATASOURCE; port=YOUR_PORT; username=YOUR_USERNAME; " +
-            "password=YOUR_PASSWORD; database=YOUR_DATABASE_NAME; CharSet=utf8;";
+        public static string connectionString = "server=YOUR_SERVER; port=3306; username=YOUR_USERNAME; " +
+            "password=YOUR_PASSWORD; database=YOUR_DB_NAME; CharSet=utf8;";
 
-        private readonly string salt = "YOUR_SALT";
+        private readonly string salt = "YOUR_SALT_70_CHARS";
 
         public string getSalt()
         {

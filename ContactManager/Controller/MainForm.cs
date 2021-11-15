@@ -39,6 +39,8 @@ namespace ContactManager
         // create a function to display the logged in image and username
         public void getImageAndUsername()
         {
+            RichTextBox richTextBox = new RichTextBox();
+
             var command = new MySqlCommand("SELECT * FROM user WHERE id=@uid", connection);
 
             command.Parameters.AddWithValue("@uid", MySqlDbType.Int32).Value = Globals.GlobalUserId;
@@ -58,8 +60,11 @@ namespace ContactManager
                 MemoryStream picture = new MemoryStream(pic);
                 pictureBox1.Image = Image.FromStream(picture);
 
+                richTextBox.Text = table.Rows[0]["username"].ToString();
+                richTextBox.SelectionColor = Color.Red;
+
                 // display the user username
-                labelUsername.Text = "Welcome Back ( " + table.Rows[0]["username"] + " )";
+                labelUsername.Text = "Welcome Back ( " + richTextBox.Text + " )";
             }
         }
 
@@ -135,7 +140,6 @@ namespace ContactManager
                         {
                             MessageBox.Show("Group name couldn't be updated", "Edit group", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
-
                         getGroups();
                     }
                     else
@@ -164,11 +168,11 @@ namespace ContactManager
                 {
                     if (group.deleteGroup(groupId))
                     {
-                        MessageBox.Show("Group deleted", "Edit group", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Group deleted", "Remove group", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Group couldn't be deleted", "Edit group", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Group couldn't be deleted", "Remove group", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
                     getGroups();
@@ -176,7 +180,7 @@ namespace ContactManager
             }
             catch
             {
-                MessageBox.Show("Select a group before deleting", "Edit group", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Select a group before deleting", "Remove group", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

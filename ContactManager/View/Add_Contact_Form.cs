@@ -9,6 +9,7 @@ namespace ContactManager
     {
         private bool mouseDown;
         private Point lastLocation;
+
         public Add_Contact_Form()
         {
             InitializeComponent();
@@ -51,28 +52,77 @@ namespace ContactManager
             string email = textBoxEmail.Text;
             int userId = Globals.GlobalUserId;
 
-            try
+            if (VerifyFields())
             {
-                // get group id
-                int groupId = (int) comboBoxGroup.SelectedValue;
-
-                // get image
-                MemoryStream pic = new MemoryStream();
-                pictureBoxContactImage.Image.Save(pic, pictureBoxContactImage.Image.RawFormat);
-
-                if (contact.insertContact(firstName, lastName, userId, groupId, phone, email, address, pic))
+                try
                 {
-                    MessageBox.Show("New contact added", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (comboBoxGroup.SelectedValue != null)
+                    {
+                        // get group id
+                        int groupId = (int)comboBoxGroup.SelectedValue;
+
+                        // get image
+                        MemoryStream pic = new MemoryStream();
+                        pictureBoxContactImage.Image.Save(pic, pictureBoxContactImage.Image.RawFormat);
+
+                        if(!contact.contactExists(firstName, lastName, "add", userId))
+                        {
+                            if (contact.insertContact(firstName, lastName, userId, groupId, phone, email, address, pic))
+                            {
+                                clearForm();
+                                MessageBox.Show("New contact added", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Something's wrong", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Contact with such First name and Last name already exists, try another", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("You must create a group first", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Error", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch(Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("* Required fields: \n \n - First Name \n - Last Name \n - Image", "Add Contact", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }      
+        }
+
+        private void clearForm()
+        {
+            textBoxFirstName.Clear();
+            textBoxLastName.Clear();
+            textBoxPhone.Clear();
+            textBoxAddress.Clear();
+            textBoxEmail.Clear();
+            pictureBoxContactImage.Image = Properties.Resources.user;
+        }
+
+        public bool VerifyFields()
+        {
+            bool check = false;
+
+            if (textBoxFirstName.Text.Trim().Equals("") || textBoxLastName.Text.Trim().Equals("")
+                || pictureBoxContactImage.Image == null)
+            {
+                check = false;
             }
+            else
+            {
+                check = true;
+            }
+
+            return check;
         }
 
         // button browse image

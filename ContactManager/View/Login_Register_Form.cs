@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace ContactManager
     {
         private bool mouseDown;
         private Point lastLocation;
+
         public Login_Register_Form()
         {
             InitializeComponent();
@@ -87,17 +89,25 @@ namespace ContactManager
 
             User user = new User();
 
-            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-
             if (VerifyFields("register"))
             {
                 MemoryStream picture = new MemoryStream();
-                pictureBoxProfileImage.Image.Save(picture, pictureBoxProfileImage.Image.RawFormat);
+
+                var avatarImage = pictureBoxProfileImage.Image;
+
+                try
+                {
+                    avatarImage.Save(picture, avatarImage.RawFormat);
+                }
+                catch (System.ArgumentNullException)
+                {
+                    avatarImage.Save(picture, ImageFormat.Png);
+                }
 
                 // we need to check if the username already exists
                 // we need to insert the new user in the database
                 // we will create that in the call User
-                if(!user.usernameExists(username, "register")) // check if the username already exists
+                if (!user.usernameExists(username, "register")) // check if the username already exists
                 {
                     if (user.insertUser(firstName, lastName, username, passwordHashed, picture))
                     {
@@ -159,10 +169,12 @@ namespace ContactManager
             // select and display image in the picturebox
             OpenFileDialog opf = new OpenFileDialog();
             opf.Filter = "Select Image(*.jpg;*.png;*.gif)|*.jpg;*.png;*.gif";
+            
 
             if(opf.ShowDialog() == DialogResult.OK)
             {
                 pictureBoxProfileImage.Image = Image.FromFile(opf.FileName);
+                setImage(pictureBoxProfileImage.Image);
             }
         }
 
@@ -244,6 +256,100 @@ namespace ContactManager
         private void panel3_MouseUp(object sender, MouseEventArgs e)
         {
             mouseDown = false;
+        }
+
+/*        private void button_Crop_Image_Click(object sender, EventArgs e)
+        {
+            Crop_Image_Form crop = new Crop_Image_Form(this.pictureToCrop);
+            crop.Show(this);
+        }*/
+
+        // declare some variables for crop coordinates
+        int cropX, cropY, rectW, rectH;
+        public Pen cropPen = new Pen(Color.White);
+
+        private void pictureBoxProfileImage_MouseDown(object sender, MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                Cursor = Cursors.Cross;
+                cropPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+                // set initial x, y coordinates for crop rectangle
+                // this is where we firstly click on image
+                cropX = e.X;
+                cropY = e.Y;
+            }
+        }
+
+        private void pictureBoxProfileImage_MouseEnter(object sender, EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            Cursor = Cursors.Cross;
+        }
+
+        private void pictureBoxProfileImage_MouseLeave(object sender, EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            Cursor = Cursors.Default;
+        }
+
+        private void pictureBoxProfileImage_MouseMove(object sender, MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            if (e.Button == MouseButtons.Left)
+            {
+                pictureBoxProfileImage.Refresh();
+                // set width and heigh for crop rectangle
+                rectW = e.X - cropX;
+                rectH = e.Y - cropY;
+                Graphics graphics = pictureBoxProfileImage.CreateGraphics();
+                button_Select_Cropped_Area.Enabled = true;
+                button_Select_Cropped_Area.Cursor = Cursors.Hand;
+                graphics.DrawRectangle(cropPen, cropX, cropY, rectW, rectH);
+                graphics.Dispose();
+            }
+        }
+
+        private Image croppedImage;
+
+        private void button_Select_Cropped_Area_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+
+            Bitmap bitmap2 = new Bitmap(pictureBoxProfileImage.Width, pictureBoxProfileImage.Height);
+            pictureBoxProfileImage.DrawToBitmap(bitmap2, pictureBoxProfileImage.ClientRectangle);
+
+            Bitmap croppedImage = new Bitmap(rectW, rectH);
+            for (int x = 0; x < rectW; x++)
+            {
+                for (int y = 0; y < rectH; y++)
+                {
+                    Color pxlColor = bitmap2.GetPixel(cropX + x, cropY + y);
+                    croppedImage.SetPixel(x, y, pxlColor);
+                }
+            }
+            pictureBoxProfileImage.Image.Dispose();
+            croppedImage.Save("CroppedImage.jpg", ImageFormat.Png);
+            pictureBoxProfileImage.Image = (Image)croppedImage;
+            pictureBoxProfileImage.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        protected void setImage(Image croppedImage)
+        {
+            this.croppedImage = croppedImage;
+        }
+
+        protected Image getImage()
+        {
+            return this.croppedImage;
+        }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            Cursor = Cursors.Default;
         }
     }
 }

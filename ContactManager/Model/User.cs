@@ -159,5 +159,25 @@ namespace ContactManager
                 return false;
             }
         }
+
+        public bool deleteAccount(int userId)
+        {
+            MySqlCommand command = new MySqlCommand("DELETE FROM user WHERE id=@id", connection);
+
+            command.Parameters.AddWithValue("@id", MySqlDbType.Int32).Value = userId;
+
+            connection.Open();
+
+            if (command.ExecuteNonQuery() == 1)
+            {
+                connection.Close();
+                return true;
+            }
+            else
+            {
+                connection.Close();
+                return false;
+            }
+        }
     }
 }

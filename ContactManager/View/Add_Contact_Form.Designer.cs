@@ -150,6 +150,7 @@ namespace ContactManager
             // 
             // button_browse
             // 
+            this.button_browse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_browse.Font = new System.Drawing.Font("Rockwell", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.button_browse.Location = new System.Drawing.Point(131, 578);
             this.button_browse.Name = "button_browse";
