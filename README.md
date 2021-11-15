@@ -25,3 +25,5 @@ In this section the user can add a new contact with data such as:
 ![ContactManager4](https://user-images.githubusercontent.com/75435412/140180060-4a323ec7-5a00-44a7-b0fa-17a63aaeb474.PNG)
 
 The user will also be able to edit existing contacts, remove the selected ones and display full list of all contacts.
+
+For the single-file launchable build, please proceed to this link: https://filippeszke.pl/ContactManager.exe
