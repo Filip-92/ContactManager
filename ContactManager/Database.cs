@@ -12,7 +12,7 @@ namespace ContactManager
         public static string connectionString = "server=YOUR_SERVER; port=3306; username=YOUR_USERNAME; " +
             "password=YOUR_PASSWORD; database=YOUR_DB_NAME; CharSet=utf8;";
 
-        private readonly string salt = "YOUR_SALT_70_CHARS";
+        private readonly string salt = "YOUR_SALT_STRING_70_CHARS";
 
         public string getSalt()
         {

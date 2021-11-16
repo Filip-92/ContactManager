@@ -35,6 +35,7 @@ namespace ContactManager
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonMinimize = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.button_Crop_Image = new System.Windows.Forms.Button();
             this.button_Edit_User = new System.Windows.Forms.Button();
             this.button_Change_Password = new System.Windows.Forms.Button();
             this.button_Remove_User = new System.Windows.Forms.Button();
@@ -46,6 +47,7 @@ namespace ContactManager
             this.label1 = new System.Windows.Forms.Label();
             this.button_browse = new System.Windows.Forms.Button();
             this.pictureBoxProfileImage = new System.Windows.Forms.PictureBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -55,6 +57,7 @@ namespace ContactManager
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -106,7 +109,8 @@ namespace ContactManager
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
+            this.panel2.BackColor = System.Drawing.Color.Gray;
+            this.panel2.Controls.Add(this.button_Crop_Image);
             this.panel2.Controls.Add(this.button_Edit_User);
             this.panel2.Controls.Add(this.button_Change_Password);
             this.panel2.Controls.Add(this.button_Remove_User);
@@ -123,9 +127,23 @@ namespace ContactManager
             this.panel2.Size = new System.Drawing.Size(670, 334);
             this.panel2.TabIndex = 0;
             // 
+            // button_Crop_Image
+            // 
+            this.button_Crop_Image.BackColor = System.Drawing.Color.Black;
+            this.button_Crop_Image.Enabled = false;
+            this.button_Crop_Image.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.button_Crop_Image.ForeColor = System.Drawing.SystemColors.Control;
+            this.button_Crop_Image.Location = new System.Drawing.Point(91, 293);
+            this.button_Crop_Image.Name = "button_Crop_Image";
+            this.button_Crop_Image.Size = new System.Drawing.Size(122, 38);
+            this.button_Crop_Image.TabIndex = 13;
+            this.button_Crop_Image.Text = "Crop image";
+            this.button_Crop_Image.UseVisualStyleBackColor = false;
+            this.button_Crop_Image.Click += new System.EventHandler(this.button_Crop_Image_Click);
+            // 
             // button_Edit_User
             // 
-            this.button_Edit_User.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(167)))), ((int)(((byte)(240)))));
+            this.button_Edit_User.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.button_Edit_User.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Edit_User.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Edit_User.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -140,7 +158,7 @@ namespace ContactManager
             // 
             // button_Change_Password
             // 
-            this.button_Change_Password.BackColor = System.Drawing.Color.DarkOrange;
+            this.button_Change_Password.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_Change_Password.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Change_Password.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Change_Password.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -155,11 +173,11 @@ namespace ContactManager
             // 
             // button_Remove_User
             // 
-            this.button_Remove_User.BackColor = System.Drawing.Color.Red;
+            this.button_Remove_User.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button_Remove_User.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Remove_User.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Remove_User.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
-            this.button_Remove_User.ForeColor = System.Drawing.Color.White;
+            this.button_Remove_User.ForeColor = System.Drawing.Color.Black;
             this.button_Remove_User.Location = new System.Drawing.Point(477, 223);
             this.button_Remove_User.Name = "button_Remove_User";
             this.button_Remove_User.Size = new System.Drawing.Size(159, 41);
@@ -250,6 +268,22 @@ namespace ContactManager
             this.pictureBoxProfileImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxProfileImage.TabIndex = 0;
             this.pictureBoxProfileImage.TabStop = false;
+            this.pictureBoxProfileImage.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBoxProfileImage_MouseDown);
+            this.pictureBoxProfileImage.MouseEnter += new System.EventHandler(this.pictureBoxProfileImage_MouseEnter);
+            this.pictureBoxProfileImage.MouseLeave += new System.EventHandler(this.pictureBoxProfileImage_MouseLeave);
+            this.pictureBoxProfileImage.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBoxProfileImage_MouseMove);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(359, 39);
+            this.panel4.TabIndex = 22;
+            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // Edit_User_Data_Form
             // 
@@ -288,5 +322,7 @@ namespace ContactManager
         private System.Windows.Forms.TextBox textBoxFirstName;
         private System.Windows.Forms.Button button_Change_Password;
         private System.Windows.Forms.Button button_Edit_User;
+        private System.Windows.Forms.Button button_Crop_Image;
+        private System.Windows.Forms.Panel panel4;
     }
 }

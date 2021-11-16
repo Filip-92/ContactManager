@@ -51,6 +51,7 @@ namespace ContactManager
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -60,6 +61,7 @@ namespace ContactManager
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(49)))), ((int)(((byte)(63)))));
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -111,7 +113,7 @@ namespace ContactManager
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SandyBrown;
+            this.panel2.BackColor = System.Drawing.Color.Gray;
             this.panel2.Controls.Add(this.buttonAddContact);
             this.panel2.Controls.Add(this.button_browse);
             this.panel2.Controls.Add(this.label7);
@@ -135,7 +137,7 @@ namespace ContactManager
             // 
             // buttonAddContact
             // 
-            this.buttonAddContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(106)))));
+            this.buttonAddContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.buttonAddContact.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAddContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddContact.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -298,6 +300,18 @@ namespace ContactManager
             this.label1.TabIndex = 6;
             this.label1.Text = "First Name:";
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(49)))), ((int)(((byte)(63)))));
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(314, 39);
+            this.panel4.TabIndex = 22;
+            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
+            // 
             // Add_Contact_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -340,5 +354,6 @@ namespace ContactManager
         private System.Windows.Forms.PictureBox pictureBoxContactImage;
         private System.Windows.Forms.Button button_browse;
         private System.Windows.Forms.Button buttonAddContact;
+        private System.Windows.Forms.Panel panel4;
     }
 }

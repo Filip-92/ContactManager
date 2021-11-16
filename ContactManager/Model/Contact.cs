@@ -88,7 +88,7 @@ namespace ContactManager
 
         public bool updateContact(int id, string firstName, string lastName, int groupId, string phone, string email, string address, MemoryStream picture)
         {
-            MySqlCommand command = new MySqlCommand("UPDATE `mycontacts` SET `first_name`=@fn,`last_name`=@ln,`group_id`=@gid,`phone`=@phone,`email`=@email,`address`=@ads WHERE `id`=@id", connection);
+            MySqlCommand command = new MySqlCommand("UPDATE `mycontacts` SET `first_name`=@fn,`last_name`=@ln,`group_id`=@gid,`phone`=@phone,`email`=@email,`address`=@ads,`picture`=@pic WHERE `id`=@id", connection);
 
             command.Parameters.AddWithValue("@fn", MySqlDbType.VarChar).Value = firstName;
             command.Parameters.AddWithValue("@ln", MySqlDbType.VarChar).Value = lastName;

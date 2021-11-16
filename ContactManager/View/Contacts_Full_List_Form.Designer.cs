@@ -40,6 +40,7 @@ namespace ContactManager
             this.label5 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.listBox1 = new System.Windows.Forms.ListBox();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -49,6 +50,7 @@ namespace ContactManager
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(49)))), ((int)(((byte)(63)))));
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -100,7 +102,7 @@ namespace ContactManager
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SandyBrown;
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.panel2.Controls.Add(this.labelShowAll);
             this.panel2.Controls.Add(this.textBoxAddress);
             this.panel2.Controls.Add(this.label5);
@@ -117,7 +119,7 @@ namespace ContactManager
             this.labelShowAll.Cursor = System.Windows.Forms.Cursors.Hand;
             this.labelShowAll.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point);
-            this.labelShowAll.ForeColor = System.Drawing.Color.Maroon;
+            this.labelShowAll.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.labelShowAll.Location = new System.Drawing.Point(223, 28);
             this.labelShowAll.Name = "labelShowAll";
             this.labelShowAll.Size = new System.Drawing.Size(85, 24);
@@ -160,7 +162,7 @@ namespace ContactManager
             // 
             // listBox1
             // 
-            this.listBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(239)))), ((int)(((byte)(247)))));
+            this.listBox1.BackColor = System.Drawing.Color.White;
             this.listBox1.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 20;
@@ -169,6 +171,18 @@ namespace ContactManager
             this.listBox1.Size = new System.Drawing.Size(189, 204);
             this.listBox1.TabIndex = 0;
             this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(49)))), ((int)(((byte)(63)))));
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel4.Location = new System.Drawing.Point(0, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(837, 39);
+            this.panel4.TabIndex = 22;
+            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // Contacts_Full_List_Form
             // 
@@ -201,5 +215,6 @@ namespace ContactManager
         private System.Windows.Forms.Label labelShowAll;
         private System.Windows.Forms.TextBox textBoxAddress;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Panel panel4;
     }
 }

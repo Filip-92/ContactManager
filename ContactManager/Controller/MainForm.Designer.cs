@@ -69,6 +69,7 @@ namespace ContactManager
             this.labelEditUserDetails = new System.Windows.Forms.Label();
             this.labelUsername = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -108,7 +109,7 @@ namespace ContactManager
             // 
             // buttonShowFullList
             // 
-            this.buttonShowFullList.BackColor = System.Drawing.Color.Orange;
+            this.buttonShowFullList.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonShowFullList.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonShowFullList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonShowFullList.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -133,7 +134,7 @@ namespace ContactManager
             // 
             // buttonSelectContact
             // 
-            this.buttonSelectContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.buttonSelectContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.buttonSelectContact.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSelectContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSelectContact.Font = new System.Drawing.Font("Rockwell", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -148,7 +149,7 @@ namespace ContactManager
             // 
             // buttonRemoveContact
             // 
-            this.buttonRemoveContact.BackColor = System.Drawing.Color.Orange;
+            this.buttonRemoveContact.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonRemoveContact.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonRemoveContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRemoveContact.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -163,7 +164,7 @@ namespace ContactManager
             // 
             // buttonEditContact
             // 
-            this.buttonEditContact.BackColor = System.Drawing.Color.Orange;
+            this.buttonEditContact.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonEditContact.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonEditContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditContact.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -178,7 +179,7 @@ namespace ContactManager
             // 
             // buttonAddContact
             // 
-            this.buttonAddContact.BackColor = System.Drawing.Color.Orange;
+            this.buttonAddContact.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.buttonAddContact.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAddContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddContact.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -233,7 +234,7 @@ namespace ContactManager
             // 
             // buttonRemoveGroup
             // 
-            this.buttonRemoveGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(105)))), ((int)(((byte)(14)))));
+            this.buttonRemoveGroup.BackColor = System.Drawing.Color.Black;
             this.buttonRemoveGroup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonRemoveGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonRemoveGroup.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -300,7 +301,7 @@ namespace ContactManager
             // 
             // buttonEditGroup
             // 
-            this.buttonEditGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(105)))), ((int)(((byte)(14)))));
+            this.buttonEditGroup.BackColor = System.Drawing.Color.Black;
             this.buttonEditGroup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonEditGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditGroup.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -345,7 +346,7 @@ namespace ContactManager
             // 
             // buttonAddGroup
             // 
-            this.buttonAddGroup.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(105)))), ((int)(((byte)(14)))));
+            this.buttonAddGroup.BackColor = System.Drawing.Color.Black;
             this.buttonAddGroup.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAddGroup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddGroup.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -424,7 +425,8 @@ namespace ContactManager
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
+            this.panel1.Controls.Add(this.panel5);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.labelRefresh);
             this.panel1.Controls.Add(this.labelEditUserDetails);
@@ -499,6 +501,18 @@ namespace ContactManager
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
+            this.panel5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel5.Location = new System.Drawing.Point(325, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(341, 53);
+            this.panel5.TabIndex = 22;
+            this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
+            // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(975, 653);
@@ -560,5 +574,6 @@ namespace ContactManager
         private Button buttonRemoveContact;
         private Button buttonEditContact;
         private Button buttonAddContact;
+        private Panel panel5;
     }
 }

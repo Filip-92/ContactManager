@@ -99,7 +99,7 @@ namespace ContactManager
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(68)))), ((int)(((byte)(173)))));
+            this.panel2.BackColor = System.Drawing.Color.Gray;
             this.panel2.Controls.Add(this.button_Change_Password);
             this.panel2.Controls.Add(this.textBoxNewPassword);
             this.panel2.Controls.Add(this.label2);
@@ -112,7 +112,7 @@ namespace ContactManager
             // 
             // button_Change_Password
             // 
-            this.button_Change_Password.BackColor = System.Drawing.Color.DarkOrange;
+            this.button_Change_Password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.button_Change_Password.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Change_Password.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_Change_Password.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);

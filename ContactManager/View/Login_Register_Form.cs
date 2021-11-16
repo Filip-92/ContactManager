@@ -283,14 +283,22 @@ namespace ContactManager
             pictureBoxProfileImage.DrawToBitmap(bitmap2, pictureBoxProfileImage.ClientRectangle);
 
             Bitmap croppedImage = new Bitmap(rectW, rectH);
-            for (int x = 0; x < rectW; x++)
+            try
             {
-                for (int y = 0; y < rectH; y++)
+                for (int x = 0; x < rectW; x++)
                 {
-                    Color pxlColor = bitmap2.GetPixel(cropX + x, cropY + y);
-                    croppedImage.SetPixel(x, y, pxlColor);
+                    for (int y = 0; y < rectH; y++)
+                    {
+                        Color pxlColor = bitmap2.GetPixel(cropX + x, cropY + y);
+                        croppedImage.SetPixel(x, y, pxlColor);
+                    }
                 }
             }
+            catch
+            {
+                MessageBox.Show("Cropping out of bounds", "Cropping Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
             pictureBoxProfileImage.Image.Dispose();
             pictureBoxProfileImage.Image = (Image)croppedImage;
             pictureBoxProfileImage.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -311,17 +319,24 @@ namespace ContactManager
         private void pictureBoxProfileImage_MouseMove(object sender, MouseEventArgs e)
         {
             base.OnMouseMove(e);
-            if (e.Button == MouseButtons.Left)
+            try
             {
-                pictureBoxProfileImage.Refresh();
-                // set width and heigh for crop rectangle
-                rectW = e.X - cropX;
-                rectH = e.Y - cropY;
-                Graphics graphics = pictureBoxProfileImage.CreateGraphics();
-                button_Select_Cropped_Area.Enabled = true;
-                button_Select_Cropped_Area.Cursor = Cursors.Hand;
-                graphics.DrawRectangle(cropPen, cropX, cropY, rectW, rectH);
-                graphics.Dispose();
+                if (e.Button == MouseButtons.Left)
+                {
+                    pictureBoxProfileImage.Refresh();
+                    // set width and heigh for crop rectangle
+                    rectW = e.X - cropX;
+                    rectH = e.Y - cropY;
+                    Graphics graphics = pictureBoxProfileImage.CreateGraphics();
+                    button_Select_Cropped_Area.Enabled = true;
+                    button_Select_Cropped_Area.Cursor = Cursors.Hand;
+                    graphics.DrawRectangle(cropPen, cropX, cropY, rectW, rectH);
+                    graphics.Dispose();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Cropping out of bounds", "Cropping Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

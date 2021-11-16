@@ -68,13 +68,13 @@ namespace ContactManager
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(167)))), ((int)(((byte)(240)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(312, 646);
+            this.panel1.Size = new System.Drawing.Size(314, 646);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -149,7 +149,7 @@ namespace ContactManager
             // 
             // button_Select_Cropped_Area
             // 
-            this.button_Select_Cropped_Area.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.button_Select_Cropped_Area.BackColor = System.Drawing.Color.Black;
             this.button_Select_Cropped_Area.Enabled = false;
             this.button_Select_Cropped_Area.Font = new System.Drawing.Font("Rockwell", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.button_Select_Cropped_Area.ForeColor = System.Drawing.Color.White;
@@ -191,7 +191,7 @@ namespace ContactManager
             // 
             // button_Register
             // 
-            this.button_Register.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(194)))), ((int)(((byte)(129)))));
+            this.button_Register.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.button_Register.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Register.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button_Register.ForeColor = System.Drawing.Color.White;
@@ -347,7 +347,7 @@ namespace ContactManager
             // 
             // button_Login
             // 
-            this.button_Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(194)))), ((int)(((byte)(129)))));
+            this.button_Login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.button_Login.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_Login.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button_Login.ForeColor = System.Drawing.Color.White;
@@ -431,7 +431,7 @@ namespace ContactManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 646);
+            this.ClientSize = new System.Drawing.Size(314, 646);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Login_Register_Form";

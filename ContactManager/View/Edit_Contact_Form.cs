@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 
@@ -8,6 +9,8 @@ namespace ContactManager
 {
     public partial class Edit_Contact_Form : Form
     {
+        private bool mouseDown;
+        private Point lastLocation;
         public Edit_Contact_Form()
         {
             InitializeComponent();
@@ -104,7 +107,7 @@ namespace ContactManager
                 MemoryStream pic = new MemoryStream();
                 pictureBoxContactImage.Image.Save(pic, pictureBoxContactImage.Image.RawFormat);
 
-                if(!contact.contactExists(firstName, lastName, "edit", Globals.GlobalUserId, contactId))
+                if (!contact.contactExists(firstName, lastName, "edit", Globals.GlobalUserId, contactId))
                 {
                     if (contact.updateContact(contactId, firstName, lastName, groupId, phone, email, address, pic))
                     {
@@ -124,6 +127,28 @@ namespace ContactManager
             {
                 MessageBox.Show(ex.Message, "Edit Contact", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouseDown = true;
+            lastLocation = e.Location;
+        }
+
+        private void panel3_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (mouseDown)
+            {
+                this.Location = new Point(
+                    (this.Location.X - lastLocation.X) + e.X, (this.Location.Y - lastLocation.Y) + e.Y);
+
+                this.Update();
+            }
+        }
+
+        private void panel3_MouseUp(object sender, MouseEventArgs e)
+        {
+            mouseDown = false;
         }
     }
 }

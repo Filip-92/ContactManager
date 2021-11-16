@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 
@@ -68,8 +69,8 @@ namespace ContactManager
             string lastName = textBoxLastName.Text;
             string username = textBoxUsername.Text;
 
-
             MemoryStream pic = new MemoryStream();
+
             pictureBoxProfileImage.Image.Save(pic, pictureBoxProfileImage.Image.RawFormat);
 
             if (username.Trim().Equals("")) // check empty fields
@@ -144,6 +145,96 @@ namespace ContactManager
             {
                 MessageBox.Show(ex.Message, "Remove account", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        // declare some variables for crop coordinates
+        int cropX, cropY, rectW, rectH;
+        public Pen cropPen = new Pen(Color.White);
+
+        private void pictureBoxProfileImage_MouseDown(object sender, MouseEventArgs e)
+        {
+            base.OnMouseDown(e);
+
+            if (e.Button == MouseButtons.Left)
+            {
+                Cursor = Cursors.Cross;
+                cropPen.DashStyle = System.Drawing.Drawing2D.DashStyle.Dot;
+                // set initial x, y coordinates for crop rectangle
+                // this is where we firstly click on image
+                cropX = e.X;
+                cropY = e.Y;
+            }
+        }
+
+        private void pictureBoxProfileImage_MouseEnter(object sender, EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            Cursor = Cursors.Cross;
+        }
+
+        private void pictureBoxProfileImage_MouseLeave(object sender, EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            Cursor = Cursors.Default;
+        }
+
+        private void pictureBoxProfileImage_MouseMove(object sender, MouseEventArgs e)
+        {
+            base.OnMouseMove(e);
+            try
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    pictureBoxProfileImage.Refresh();
+                    // set width and heigh for crop rectangle
+                    rectW = e.X - cropX;
+                    rectH = e.Y - cropY;
+                    Graphics graphics = pictureBoxProfileImage.CreateGraphics();
+                    button_Crop_Image.Enabled = true;
+                    button_Crop_Image.Cursor = Cursors.Hand;
+                    graphics.DrawRectangle(cropPen, cropX, cropY, rectW, rectH);
+                    graphics.Dispose();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Cropping out of bounds", "Cropping Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void button_Crop_Image_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.Default;
+
+            Bitmap bitmap2 = new Bitmap(pictureBoxProfileImage.Width, pictureBoxProfileImage.Height);
+            pictureBoxProfileImage.DrawToBitmap(bitmap2, pictureBoxProfileImage.ClientRectangle);
+
+            Bitmap croppedImage = new Bitmap(rectW, rectH);
+            try
+            {
+                for (int x = 0; x < rectW; x++)
+                {
+                    for (int y = 0; y < rectH; y++)
+                    {
+                        Color pxlColor = bitmap2.GetPixel(cropX + x, cropY + y);
+                        croppedImage.SetPixel(x, y, pxlColor);
+                    }
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Cropping out of bounds", "Cropping Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            pictureBoxProfileImage.Image.Dispose();
+            pictureBoxProfileImage.Image = (Image)croppedImage;
+            pictureBoxProfileImage.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        protected override void OnMouseEnter(EventArgs e)
+        {
+            base.OnMouseEnter(e);
+            Cursor = Cursors.Default;
         }
     }
 }

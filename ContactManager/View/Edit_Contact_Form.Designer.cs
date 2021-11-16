@@ -31,6 +31,7 @@ namespace ContactManager
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Edit_Contact_Form));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonMinimize = new System.Windows.Forms.Button();
@@ -63,6 +64,7 @@ namespace ContactManager
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(49)))), ((int)(((byte)(63)))));
+            this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -70,6 +72,15 @@ namespace ContactManager
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(506, 813);
             this.panel1.TabIndex = 1;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(49)))), ((int)(((byte)(63)))));
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel4.Location = new System.Drawing.Point(3, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(314, 39);
+            this.panel4.TabIndex = 22;
             // 
             // panel3
             // 
@@ -82,6 +93,9 @@ namespace ContactManager
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(314, 39);
             this.panel3.TabIndex = 3;
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // buttonClose
             // 
@@ -111,7 +125,7 @@ namespace ContactManager
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.SandyBrown;
+            this.panel2.BackColor = System.Drawing.Color.Gray;
             this.panel2.Controls.Add(this.buttonSelectContact);
             this.panel2.Controls.Add(this.textBoxContactId);
             this.panel2.Controls.Add(this.labelContactId);
@@ -138,7 +152,7 @@ namespace ContactManager
             // 
             // buttonSelectContact
             // 
-            this.buttonSelectContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
+            this.buttonSelectContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.buttonSelectContact.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSelectContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSelectContact.Font = new System.Drawing.Font("Rockwell", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -173,7 +187,7 @@ namespace ContactManager
             // 
             // buttonEditContact
             // 
-            this.buttonEditContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(177)))), ((int)(((byte)(106)))));
+            this.buttonEditContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(179)))), ((int)(((byte)(179)))));
             this.buttonEditContact.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonEditContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditContact.Font = new System.Drawing.Font("Rockwell", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
@@ -188,6 +202,7 @@ namespace ContactManager
             // 
             // button_browse
             // 
+            this.button_browse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_browse.Font = new System.Drawing.Font("Rockwell", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.button_browse.Location = new System.Drawing.Point(132, 614);
             this.button_browse.Name = "button_browse";
@@ -381,5 +396,6 @@ namespace ContactManager
         private System.Windows.Forms.TextBox textBoxContactId;
         private System.Windows.Forms.Label labelContactId;
         private System.Windows.Forms.Button buttonSelectContact;
+        private System.Windows.Forms.Panel panel4;
     }
 }
