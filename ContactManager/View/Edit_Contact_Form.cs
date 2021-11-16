@@ -105,7 +105,17 @@ namespace ContactManager
 
                 // get image
                 MemoryStream pic = new MemoryStream();
-                pictureBoxContactImage.Image.Save(pic, pictureBoxContactImage.Image.RawFormat);
+                
+                var avatarImage = pictureBoxProfileImage.Image;
+
+                try
+                {
+                    avatarImage.Save(pic, avatarImage.RawFormat);
+                }
+                catch (System.ArgumentNullException)
+                {
+                    avatarImage.Save(pic, ImageFormat.Png);
+                }
 
                 if (!contact.contactExists(firstName, lastName, "edit", Globals.GlobalUserId, contactId))
                 {
