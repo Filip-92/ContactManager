@@ -81,6 +81,9 @@ namespace ContactManager
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(314, 39);
             this.panel4.TabIndex = 22;
+            this.panel4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
+            this.panel4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
+            this.panel4.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseUp);
             // 
             // panel3
             // 
