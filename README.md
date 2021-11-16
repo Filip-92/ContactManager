@@ -26,4 +26,4 @@ In this section the user can add a new contact with data such as:
 
 The user will also be able to edit existing contacts, remove the selected ones and display full list of all contacts.
 
-For the single-file launchable build (win x-64 launch environment), please proceed to this link: https://filippeszke.pl/ContactManager.exe
+For the single-file launchable build (winx-64 launch environment), please proceed to this link: https://filippeszke.pl/ContactManager.exe
