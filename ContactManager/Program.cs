@@ -15,7 +15,7 @@ namespace ContactManager
         {
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
 
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
+            //Application.SetHighDpiMode(HighDpiMode.SystemAware); - disabling scaling 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
