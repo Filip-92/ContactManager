@@ -1,7 +1,7 @@
 # ContactManager
 C# desktop application created using Windows Forms and MySql
 
-Before getting access to the main app features, the user need to login/signup first.
+Before getting access to the main app features, the user needs to login/signup first.
 
 ![ContactManager1](https://user-images.githubusercontent.com/75435412/141822283-7986aac1-2a40-447f-b8c0-35ab7c5cb3d5.PNG)
 ![ContactManager2](https://user-images.githubusercontent.com/75435412/141822327-fd5bbceb-e687-465c-82a2-e5be0634f569.PNG)
